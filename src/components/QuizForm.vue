@@ -11,9 +11,28 @@ const filled = computed<boolean>(
 function submit(event: Event): void {
   event.preventDefault()
   if (filled.value) {
-    alert(`Vous avez choisi la couleur ${cheval.value} !`)
+    /*alert(`Vous avez choisi la couleur ${cheval.value} !`)
     alert(`Vous avez dit qu'il avait ${pattes.value} pattes !`)
-    alert(`Vous avez choisi comme capitale ${capitale.value} !`)
+    alert(`Vous avez choisi comme capitale ${capitale.value} !`)*/
+  }
+
+  let score = 0
+
+  if (cheval.value === 'blanc') {
+    score++
+  }
+
+  if (pattes.value === '4') {
+    score++
+  }
+
+  if (capitale.value === 'Berne') {
+    score++
+  }
+  if (score === 3) {
+    alert('Félicitations, votre score est parfait !')
+  } else {
+    alert(`Votre score final est de ${score} sur 3.`)
   }
 }
 </script>
@@ -54,7 +73,17 @@ function submit(event: Event): void {
       />
       <label class="form-check-label" for="chevalNoir">Noir</label>
     </div>
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+    <div class="form-check">
+      <input
+        id="chevalrose"
+        v-model="cheval"
+        class="form-check-input"
+        type="radio"
+        name="cheval"
+        value="rose"
+      />
+      <label class="form-check-label" for="chevalrose">Rose</label>
+    </div>
   </form>
 
   <form @submit="submit">
@@ -92,7 +121,17 @@ function submit(event: Event): void {
       />
       <label class="form-check-label" for="pattes8">8</label>
     </div>
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+    <div class="form-check">
+      <input
+        id="pattes3"
+        v-model="pattes"
+        class="form-check-input"
+        type="radio"
+        name="pattes"
+        value="3"
+      />
+      <label class="form-check-label" for="pattes3">3</label>
+    </div>
   </form>
 
   <form @submit="submit">
@@ -126,9 +165,20 @@ function submit(event: Event): void {
         class="form-check-input"
         type="radio"
         name="capitale"
-        value="berne"
+        value="Berne"
       />
       <label class="form-check-label" for="capitaleberne">Berne</label>
+    </div>
+    <div class="form-check">
+      <input
+        id="capitalezurich"
+        v-model="capitale"
+        class="form-check-input"
+        type="radio"
+        name="capitale"
+        value="zurich"
+      />
+      <label class="form-check-label" for="capitalezurich">Zurich</label>
     </div>
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
   </form>

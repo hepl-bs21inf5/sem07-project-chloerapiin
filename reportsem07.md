@@ -10,17 +10,17 @@ Seminaire 06 - Outils
 
 ### 0. Temps éstimé
 
-| **Tâches**          | **Temps estimé** | **Temps passé** | **Commentaire**                                                                                                                         |
-| ------------------- | ---------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| vue.js              | 15min            | 1h              | problème pour trouver les dossiers cachés, ce qui m'a fait perdre du temps                                                              |
-| bootstrap           | 30min            | 45min           | Bootstrap ne s'était pas installer                                                                                                      |
-| quiz                |                  |                 |                                                                                                                                         |
-| création des 3 quiz | 20min            | 33min           | il faut prendre le temps de bien comprendre les éléments du code à changer pour faire une nouvelle question avec des nouvelles réponses |
-|                     | -                |                 |                                                                                                                                         |
-|                     | -                |                 |                                                                                                                                         |
-|                     | -                |                 |                                                                                                                                         |
-|                     | -                |                 |                                                                                                                                         |
-|                     | -                |                 |                                                                                                                                         |
+| **Tâches**     | **Temps estimé** | **Temps passé** | **Commentaire**                                                                                        |
+| -------------- | ---------------- | --------------- | ------------------------------------------------------------------------------------------------------ |
+| vue.js         | 15min            | 1h              | problème pour trouver les dossiers cachés, ce qui m'a fait perdre du temps                             |
+| bootstrap      | 30min            | 45min           | Bootstrap ne s'était pas installer                                                                     |
+| quiz           | -                | -               |                                                                                                        |
+| 3 quiz         | 20min            | 33min           | comprendre les éléments du code à changer pour faire une nouvelle question avec des nouvelles réponses |
+| 4 choix de rep | 5min             | 7min            |                                                                                                        |
+| ajouter score  | 5min             | 20min           | rappel des condition, if a ajouter dans la fonction submit                                             |
+|                | -                |                 |                                                                                                        |
+|                | -                |                 |                                                                                                        |
+|                | -                |                 |                                                                                                        |
 
 # 1. Tâches réalisées
 
