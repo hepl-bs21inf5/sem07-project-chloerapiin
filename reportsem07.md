@@ -10,21 +10,21 @@ Seminaire 06 - Outils
 
 ### 0. Temps éstimé
 
-| **Tâches** | **Temps estimé** | **Temps passé** | **Détails** |
-| ---------- | ---------------- | --------------- | ----------- |
-|            |                  |                 |             |
-|            | -                |                 |             |
-|            |                  |                 |             |
-|            | -                |                 |             |
+| **Tâches** | **Temps estimé** | **Temps passé** | **Commentaire**                                                            |
+| ---------- | ---------------- | --------------- | -------------------------------------------------------------------------- |
+| vue.js     | 15min            | 1h              | problème pour trouver les dossiers cachés, ce qui m'a fait perdre du temps |
+| Bootstrap  | 30min            | 45min           | Bootstrap ne s'était pas installer                                         |
+|            |                  |                 |                                                                            |
+|            | -                |                 |                                                                            |
 
 # 1. Tâches réalisées
 
-| **Tâche** | **Description**                               |
-| --------- | --------------------------------------------- |
-| Tâche 1   | Trouver une idée de projet                    |
-| Tâche 2   | faire un schéma de la structure de mon projet |
-| Tâche 3   | comprendre mieux l'utilisation de vue.js      |
-| ...       | ...                                           |
+| **Tâche** | **Description**          |
+| --------- | ------------------------ |
+| vue.js    | installation de vue.js   |
+| Bootstrap | instalation de bootstrap |
+| Tâche 3   |                          |
+| ...       | ...                      |
 
 # 2. Difficultés rencontrées et solutions trouvées
 
