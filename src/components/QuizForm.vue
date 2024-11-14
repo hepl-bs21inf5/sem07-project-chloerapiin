@@ -17,18 +17,18 @@ function submit(event: Event): void {
     alert(`Vous avez dit qu'il avait ${pattes.value} pattes !`)
     alert(`Vous avez choisi comme capitale ${capitale.value} !`)*/
   }
-
+  /*j'ai rajouter la méthode toLowerCase() qui permet de mettre la réponse de l'utilisateur en minuscules */
   let score = 0
 
-  if (cheval.value === 'blanc') {
+  if (cheval.value?.toLowerCase() === 'blanc') {
     score++
   }
 
-  if (pattes.value === 'pattes4') {
+  if (pattes.value?.toLowerCase() === '4') {
     score++
   }
 
-  if (capitale.value === 'berne') {
+  if (capitale.value?.toLowerCase() === 'berne') {
     score++
   }
   if (score === 3) {
@@ -168,7 +168,7 @@ function reset(event: Event): void {
     </div>
   </form> -->
 
-    <QuestionRadio
+    <!-- <QuestionRadio
       id="pattes"
       v-model="pattes"
       text="Combien de pattes a un chat ?"
@@ -178,6 +178,14 @@ function reset(event: Event): void {
         { value: 'pattes8', text: '8' },
         { value: 'pattes4', text: '4' },
       ]"
+    />
+  </form> -->
+
+    <QuestionText
+      id="pattes"
+      v-model="pattes"
+      text="Combien de pattes a un chat?"
+      placeholder="Veuillez saisir un nombre"
     />
   </form>
 
@@ -228,7 +236,7 @@ function reset(event: Event): void {
       />
       <label class="form-check-label" for="capitalezurich">Zurich</label>
     </div> -->
-    <QuestionRadio
+    <!-- <QuestionRadio
       id="capitale"
       v-model="capitale"
       text="Quelle est la capitale de la suisse ?"
@@ -238,6 +246,13 @@ function reset(event: Event): void {
         { value: 'berne', text: 'Berne' },
         { value: 'geneve', text: 'Geneve' },
       ]"
+    /> -->
+
+    <QuestionText
+      id="capitale"
+      v-model="capitale"
+      text="Quelle est la capitale de la suisse ?"
+      placeholder="Veuillez saisir une ville"
     />
 
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
