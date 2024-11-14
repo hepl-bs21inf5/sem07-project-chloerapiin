@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import { computed, ref } from 'vue'
-import QuestionText from './QuestionText.vue'
+import QuestionText from '@/components/QuestionText.vue'
 
 const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
