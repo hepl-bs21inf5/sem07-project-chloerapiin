@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import { computed, ref } from 'vue'
+import QuestionText from './QuestionText.vue'
 
 const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
@@ -97,7 +98,7 @@ function reset(event: Event): void {
   </form>
    -->
 
-    <QuestionRadio
+    <!-- <QuestionRadio
       id="cheval"
       v-model="cheval"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
@@ -107,6 +108,15 @@ function reset(event: Event): void {
         { value: 'noir', text: 'Noir' },
         { value: 'rose', text: 'Rose' },
       ]"
+    />
+
+  </form> -->
+
+    <QuestionText
+      id="cheval"
+      v-model="cheval"
+      text="De quelle couleur est le cheval blanc de Napoléon ?"
+      placeholder="Veuillez saisir une couleur"
     />
   </form>
 
