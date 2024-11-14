@@ -20,7 +20,7 @@ Seminaire 06 - Outils
 | ajouter score  | 5min             | 20min           | rappel des condition, if a ajouter dans la fonction submit                                             |
 | ajouter reset  | 1h               | 2h              | problème à cause de l'indentation et de faire attention à fermer l'accolade accolade                   |
 | QuestionRadio  | 1h               | 50min           |                                                                                                        |
-| Questiontext   | 1h               | 1h20 +          |                                                                                                        |
+| Questiontext   | 1h               | 1h40 +          |                                                                                                        |
 
 # 1. Tâches réalisées
 
