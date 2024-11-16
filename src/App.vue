@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -24,22 +24,31 @@
       </button>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
+          <li class="nav-item"> <!--Ajouter trivia dans la bar de navigation avec comme logo un '?'-->
+            <RouterLink class="nav-link" to="/trivia">
+              <i class="bi bi-question"></i>
+              Trivia
+            </RouterLink>
+          </li>
           <!-- Lien vers la page "À propos" avec icône -->
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/about">
-              <i class="bi bi-info-square"></i> <!-- Icône pour "À propos" -->
+            <RouterLink class="nav-link" to="/à propos">
+              <i class="bi bi-info-square"></i>
+              <!-- Icône pour "À propos" -->
               À propos
             </RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link" to="/contact">
-              <i class="bi bi-envelope"></i>  <!-- Icône pour "Contact" -->
+              <i class="bi bi-envelope"></i>
+              <!-- Icône pour "Contact" -->
               Contact
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/settings">
-              <i class="bi bi-gear"></i>  <!-- Icône pour "Paramètres" -->
+            <RouterLink class="nav-link" to="/parametre">
+              <i class="bi bi-gear"></i>
+              <!-- Icône pour "Paramètres" -->
               Paramètres
             </RouterLink>
           </li>

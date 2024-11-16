@@ -19,8 +19,18 @@ Seminaire 06 - Outils
 | 4 choix de rep | 5min             | 7min            |                                                                                                        |
 | ajouter score  | 5min             | 20min           | rappel des condition, if a ajouter dans la fonction submit                                             |
 | ajouter reset  | 1h               | 2h              | problème à cause de l'indentation et de faire attention à fermer l'accolade accolade                   |
-| QuestionRadio  | 1h               | 50min           |                                                                                                        |
-| Questiontext   | 1h               | 1h40 +          |                                                                                                        |
+| QuestionRadio  | 1h               | 50min           | Faire attention aux props                                                                              |
+| Questiontext   | 1h               | 1h40 +          | Pas facile de faire attention à tous les détails à ne pas oublier                                      |
+|                |                  |                 | pour faire fonctionner le code comme pour question RADIO                                               |
+| API            | 1h30             | 30min           | porblème avec le fichier triviaView --> il dit : Impossible de localiser le module                     |
+| Checkbox       | 1h...            | 2h...           | je n'y arrive pas, je mélange tous les quiz et j'ai plus que le trivia et plus le mien de quiz         |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
+|                |                  |                 |                                                                                                        |
 
 # 1. Tâches réalisées
 
@@ -86,11 +96,22 @@ il verifie chaque réponse entrée par l'utilisateur et calcul le nombre de rép
 
 ## Qu'est-ce qu'un v-model ?
 
+ça permet de stocker une variable qui peut changer, comme dans mon quiz ou ça peut être cheval/pattes/capitale
+
 ## À quoi sert le :class="{ disabled: !filled }" ?
+
+:disabled permet de cibler un élément désactivé --> permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
+
+# Comment rendre la propriété placeholder optionnelle ?
+
+mettre une condition dessus ? if/else ?...
 
 # Le composant QuestionRadio doit recevoir les propriétés suivantes :
 
 v-model : la valeur de la réponse (bi-directionnel, car on veut pouvoir modifier la réponse depuis le composant parent lorsqu'on clique sur le bouton "Réinitialiser" et récupérer la réponse depuis le composant parent pour calculer le score).
+
 id : un identifiant unique pour le groupe de boutons radio.
+
 text : le texte de la question.
+
 options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.

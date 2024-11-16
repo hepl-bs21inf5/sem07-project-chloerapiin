@@ -251,7 +251,7 @@ function reset(event: Event): void {
     <QuestionText
       id="capitale"
       v-model="capitale"
-      text="Quelle est la capitale de la suisse ?"
+      text="Quelle est la capitale de la Suisse ?"
       placeholder="Veuillez saisir une ville"
     />
 
