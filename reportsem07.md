@@ -24,8 +24,8 @@ Seminaire 06 - Outils
 |                |                  |                 | pour faire fonctionner le code comme pour question RADIO                                               |
 | API            | 1h30             | 30min           | porblème avec le fichier triviaView --> il dit : Impossible de localiser le module                     |
 | Checkbox       | 1h...            | 2h...           | je n'y arrive pas, je mélange tous les quiz et j'ai plus que le trivia et plus le mien de quiz         |
-|                |                  |                 |                                                                                                        |
-|                |                  |                 |                                                                                                        |
+| réponse        | 1h               | 1h30min         | Ce qui est attendu est clairement formulé et expliqué dans la marche à suivre, faire attention de bien |
+|                |                  |                 | vérifier les majuscules ou ce qu'on à écrit pour nos valeurs, pour que la comparaiosn marche bien      |
 |                |                  |                 |                                                                                                        |
 |                |                  |                 |                                                                                                        |
 |                |                  |                 |                                                                                                        |
@@ -115,3 +115,11 @@ id : un identifiant unique pour le groupe de boutons radio.
 text : le texte de la question.
 
 options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.
+
+# À quoi sert l'option immediate: true dans le watch ?
+
+Permet de forcer l'exécution immédiate du rappel d'un observateur, car tant que l'utilisateur ne sélectionne pas de réponse on ne voit pas true ou false pour chaque question -->
+
+# Que se passe-t-il si on l'enlève ou si on met immediate: false ?
+
+pas immédiat il attend que l'utilisateur choisisse des réponses avant d'afficher

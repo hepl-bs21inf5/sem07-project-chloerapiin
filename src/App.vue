@@ -24,7 +24,8 @@ import { RouterLink, RouterView } from 'vue-router'
       </button>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
-          <li class="nav-item"> <!--Ajouter trivia dans la bar de navigation avec comme logo un '?'-->
+          <li class="nav-item">
+            <!--Ajouter trivia dans la bar de navigation avec comme logo un '?'-->
             <RouterLink class="nav-link" to="/trivia">
               <i class="bi bi-question"></i>
               Trivia
@@ -32,7 +33,7 @@ import { RouterLink, RouterView } from 'vue-router'
           </li>
           <!-- Lien vers la page "À propos" avec icône -->
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/à propos">
+            <RouterLink class="nav-link" to="/about">
               <i class="bi bi-info-square"></i>
               <!-- Icône pour "À propos" -->
               À propos
@@ -46,7 +47,7 @@ import { RouterLink, RouterView } from 'vue-router'
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/parametre">
+            <RouterLink class="nav-link" to="/parametres">
               <i class="bi bi-gear"></i>
               <!-- Icône pour "Paramètres" -->
               Paramètres
