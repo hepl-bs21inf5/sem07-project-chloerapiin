@@ -12,10 +12,10 @@ const score = computed<number>(
 ) /*computed score qui calcule le score en fonction des valeurs de correctAnswers */
 const totalScore = computed<number>(
   () => correctAnswers.value.length,
-) /*calcule le score maximal possible, en prenant seulement les valeurs correctes */
+) /*calcule le score maximal possible, en prenant le tableau seulement des valeurs correctes */
 const filled = computed<boolean>(
   () => cheval.value !== null && pattes.value !== null && capitale.value !== null,
-) /*la propriété length retourne retourne le nombre de fois qu'il y true(le nombre de réponse juste)--> donc ici on dit que on veut toute les valeurs true et qu'on les comptes ce qui nous donne le score totale(le nombre de fois qu'on a true)  */
+)
 
 function submit(event: Event): void {
   event.preventDefault()
@@ -56,7 +56,12 @@ function reset(event: Event): void {
 
 <template>
   <form>
-    <!-- <QuestionRadio
+    
+  
+  <!--</form>
+   
+
+    <QuestionRadio
       id="cheval"
       v-model="correctAnswers[0]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
@@ -80,6 +85,8 @@ function reset(event: Event): void {
   </form>
 
   <form>
+    
+
     <QuestionRadio
       id="pattes"
       v-model="correctAnswers[1]"
@@ -103,6 +110,8 @@ function reset(event: Event): void {
   </form> -->
 
   <form>
+
+
     <QuestionRadio
       id="capitale"
       v-model="correctAnswers[2]"
@@ -132,7 +141,7 @@ function reset(event: Event): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" @click="reset">
       Réinitialiser
     </button>
-    <div>Réponses correctes : {{ correctAnswers }}</div> <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
+    <div>Réponses correctes : {{ correctAnswers }}</div>
     <div>Score : {{ score }} / {{ totalScore }}</div>
   </form>
 </template>

@@ -26,7 +26,7 @@ Seminaire 06 - Outils
 | Checkbox       | 1h...            | 2h...           | je n'y arrive pas, je mélange tous les quiz et j'ai plus que le trivia et plus le mien de quiz         |
 | réponse        | 1h               | 1h30min         | Ce qui est attendu est clairement formulé et expliqué dans la marche à suivre, faire attention de bien |
 |                |                  |                 | vérifier les majuscules ou ce qu'on à écrit pour nos valeurs, pour que la comparaiosn marche bien      |
-|                |                  |                 |                                                                                                        |
+| score          | 1h               |                 |                                                                                                        |
 |                |                  |                 |                                                                                                        |
 |                |                  |                 |                                                                                                        |
 |                |                  |                 |                                                                                                        |
@@ -88,7 +88,8 @@ QuizForm.vue: code html de base
 
 ## Quelles sont les similarités et les différences entre ref et computed ?
 
-il s'agit des élèment de la class, donc computed c'est la clé et ref la valeur... ?
+ce sont tous les deux des "variables", sauf que computed est mis à jour automatiquement selon d'autres "variables"
+--> ref est une variable qu'on met à jour nous-mêmes, alors que computed se met à jour automatiquement en fonction d'autres "variables".
 
 ## Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?
 
@@ -104,7 +105,8 @@ il verifie chaque réponse entrée par l'utilisateur et calcul le nombre de rép
 
 # Comment rendre la propriété placeholder optionnelle ?
 
-mettre une condition dessus ? if/else ?...
+required: Définit si l'accessoire est nécessaire.
+En mettant required: false, alors la propriété devient optionnelle ce qui évite que Vue déclenche une erreur si la prop n'est pas fournie lors de l'éxecution
 
 # Le composant QuestionRadio doit recevoir les propriétés suivantes :
 
@@ -118,8 +120,13 @@ options : un tableau d'objets pour les options de réponse. Chaque objet doit av
 
 # À quoi sert l'option immediate: true dans le watch ?
 
-Permet de forcer l'exécution immédiate du rappel d'un observateur, car tant que l'utilisateur ne sélectionne pas de réponse on ne voit pas true ou false pour chaque question -->
+Permet de forcer l'exécution immédiate de l'affichage de la réponse, car tant que l'utilisateur ne sélectionne pas de réponse on ne voit pas true ou false pour chaque question
 
 # Que se passe-t-il si on l'enlève ou si on met immediate: false ?
 
-pas immédiat il attend que l'utilisateur choisisse des réponses avant d'afficher
+pas immédiat il attend que l'utilisateur choisisse des réponses avant d'afficher les réponses (true ou false)
+
+# Porposer une autre manière de calculer le score et comparer les deux méthodes 
+
+il y aurai la manière avec la fonction submit comme on avait fait au début (avec les conditon if)
+

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
-const model = defineModel<booleanl>()
+const model = defineModel<boolean>()
 /*définir les props */
 const props = defineProps({
   id: { type: String, required: true },
@@ -9,6 +9,7 @@ const props = defineProps({
   answer: { type: String, required: true },
   placeholder: {
     type: String,
+    required: false, /*permet de rendre la propriété placeholder optionnelle */
     default: 'Veuillez saisir une réponse',
   } /*phrase mise par défaut pour chaque question posée*/,
 })
