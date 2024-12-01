@@ -6,18 +6,17 @@ import { computed, ref } from 'vue'
 
 const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
-const capitale = ref<string | null>(null) /*Création de mes différentes valeurs pour mes quiz */
+const capitale = ref<string | null>(null) //Création de mes différentes valeurs pour mes quiz 
 const questionStates = ref<QuestionState[]>([])
 const score = computed<number>(
   () =>
     questionStates.value.filter(state => state === QuestionState.Correct)
       .length,
-) /*computed score qui calcule le score en fonction des valeurs de questionStates */
+) //computed score qui calcule le score en fonction des valeurs de questionStates 
 
 const totalScore = computed<number>(() => questionStates.value.length)
- /*calcule le score maximal possible, en prenant seulement les valeurs correctes */
- /*la propriété length retourne retourne le nombre de fois qu'il y true(le nombre de réponse juste)--> donc ici on dit que on veut toute les valeurs true et qu'on les comptes ce qui nous donne le score totale(le nombre de fois qu'on a true)  */
-
+ //calcule le score maximal possible, en prenant seulement les valeurs correctes 
+ //la propriété length retourne retourne la longueur de la liste
 
  //every retourne true si toutes les valeurs du tableau satisfont la condition 
  const filled = computed<boolean>(() =>

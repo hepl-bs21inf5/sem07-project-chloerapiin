@@ -4,21 +4,20 @@ import { ref, watch } from 'vue'
 import { QuestionState } from '@/utils/models'
 
 const model = defineModel<QuestionState>()
-/*définir les props */
+//définir les props 
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: { type: String, required: true },
   placeholder: {
     type: String,
-    required: false, /*permet de rendre la propriété placeholder optionnelle */
-    default: 'Veuillez saisir une réponse',
-  } /*phrase mise par défaut pour chaque question posée*/,
+    required: false, //si il y a une valeur par défaut, la props est optionnelle  
+    default: 'Veuillez saisir une réponse'}, //phrase mise par défaut pour chaque question posée
 })
 
 const value = ref<string | null>(null)
 
-/*la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change */
+//la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change */
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
 watch(
   value,

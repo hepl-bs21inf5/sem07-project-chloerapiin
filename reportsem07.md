@@ -37,7 +37,7 @@ Seminaire 06 - Outils
 | **Problème**        | **Description**                                                                    | **Solution**      |
 | ------------------- | ---------------------------------------------------------------------------------- | ----------------- |
 | Problème 1: 1.12.24 | Afficher le score uniquement si toutes les questions ont été soumises et corrigées | je n'y arrive pas |
-| Problème 2          |                                                                                    |                   |
+|                     |                                                                                    |                   |
 |                     |                                                                                    |                   |
 
 # 4. Suite du projet
@@ -50,7 +50,7 @@ Seminaire 06 - Outils
 
 option + shift + F pour formater le tableau
 
-Le rôle des fichiers suivants :
+# Le rôle des fichiers suivants :
 main.ts
 main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
 App.vue: icône navabar
@@ -81,7 +81,7 @@ il verifie chaque réponse entrée par l'utilisateur et calcul le nombre de rép
 # Comment rendre la propriété placeholder optionnelle ?
 
 required: Définit si l'accessoire est nécessaire.
-En mettant required: false, alors la propriété devient optionnelle ce qui évite que Vue déclenche une erreur si la prop n'est pas fournie lors de l'éxecution
+En mettant required: false, la propriété devient optionnelle. Même avant l'exécution, l'erreur est déjà signalée, ce qui empêche Vue de générer une erreur si la prop n'est pas donnée lors de l'exécution.
 
 # Le composant QuestionRadio doit recevoir les propriétés suivantes :
 
@@ -103,20 +103,52 @@ pas immédiat il attend que l'utilisateur choisisse des réponses avant d'affich
 
 # Porposer une autre manière de calculer le score et comparer les deux méthodes
 
+1er méthode :
+const score = computed<number>(  
+ () => correctAnswers.value.filter(value => value).length,
+)
+#correctAnswers.value est un tableau qui contient les réponses true or false
+#filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
+#length : calcul le nombre de réponses correctes
+
+#+ cette méthode est plus courte et concise
+#- elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
+
+2e méthode :
+function submit(event: Event): void {
+event.preventDefault()
+let score: number = 0
+if (cheval.value === 'blanc') {
+score += 1
+}
+if (chat.value === '4') {
+score += 1
+}
+alert(`Votre score est de ${score} sur 2`)
+}
+#dans cette méthode, on calcul le score en fonction des réponses données pour chaque question et si elles sont juste alors on ajoute 1 à notre score
+
+#+ plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
+#- plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
+
 il y aurai la manière avec la fonction submit comme on avait fait au début (avec les conditon if)
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
     ### model.value =
     ### value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+
 ######
+
 #If (newModel === QuestionState.Submit)#
-    if (value.value == props.answer){             #si la valeur entrée est correct(= à props.answer)alors 
-        model.value == QuestionState.Correct      #alors on assigne questionState.Correct à model.value
-    } else {                                      #sinon
-        model.value == QuestionState.Wrong        #on assigne question.Wrong à model.value
-    }
+if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
+model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
+} else { #sinon
+model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
+}
+
 ######
+
     ## AIDE:
     //IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     //--> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
@@ -139,16 +171,16 @@ il y aurai la manière avec la fonction submit comme on avait fait au début (av
 # Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
 watch(
-  model,
-  (newModel) => {
-    if (newModel === QuestionState.Submit) { 
-        if (value.value == props.answer){             #si la valeur entrée est correct(= à props.answer)alors 
-            model.value == QuestionState.Correct      #alors on assigne questionState.Correct à model.value
-        } else {                                      #sinon
-            model.value == QuestionState.Wrong        #on assigne question.Wrong à model.value
-        }
-    } else if (newModel === QuestionState.Empty){     #si l'utilisateur ne donne pas de réponse alors newModel est égale à QuestionState.Empty
-      value.value = null                              # donc la valeur est null
-    }
-  },
+model,
+(newModel) => {
+if (newModel === QuestionState.Submit) {
+if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
+model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
+} else { #sinon
+model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
+}
+} else if (newModel === QuestionState.Empty){ #si l'utilisateur ne donne pas de réponse alors newModel est égale à QuestionState.Empty
+value.value = null # donc la valeur est null
+}
+},
 );

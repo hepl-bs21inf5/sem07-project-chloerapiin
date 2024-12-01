@@ -3,22 +3,22 @@ import {
   ref,
   watch,
   type PropType,
-} from 'vue' /*defineModel et defineProps pour définir le modèle (v-model) et les propriétés (text, name, options) du composant. */
+} from 'vue' //defineModel et defineProps pour définir le modèle (v-model) et les propriétés (text, name, options) du composant. 
 
 import { QuestionState } from '@/utils/models'
 
-const model = defineModel<QuestionState>() /*on transforme le model pour qu'il contienne un état*/
+const model = defineModel<QuestionState>() //on transforme le model pour qu'il contienne un état
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type: String, required: true },/*on ajoute une nouvelle propriété qui va contenir la reponse correcte */
+  answer: { type: String, required: true },//on ajoute une nouvelle propriété qui va contenir la reponse correcte 
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
   },
 })
 
-const value = ref<string | null>(null) /*ajouter la const (ref,value) pour la valeur de réponse de l'utilisateur */
+const value = ref<string | null>(null) ///ajouter la const (ref,value) pour la valeur de réponse de l'utilisateur 
 
 //la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change 
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
