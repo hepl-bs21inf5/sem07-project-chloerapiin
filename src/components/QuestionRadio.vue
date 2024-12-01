@@ -5,7 +5,9 @@ import {
   type PropType,
 } from 'vue' /*defineModel et defineProps pour définir le modèle (v-model) et les propriétés (text, name, options) du composant. */
 
-const model = defineModel<boolean>() /*on transforme le model pour qu'il devienne de type bool*/
+import { QuestionState } from '@/utils/models'
+
+const model = defineModel<QuestionState>() /*on transforme le model pour qu'il contienne un état*/
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
@@ -18,15 +20,32 @@ const props = defineProps({
 
 const value = ref<string | null>(null) /*ajouter la const (ref,value) pour la valeur de réponse de l'utilisateur */
 
-/*la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change */
+//la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change 
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
 watch(
   value,
   (newValue) => {
-    model.value = newValue === props.answer
+    if (newValue === null) {
+      model.value = QuestionState.Empty
+    } else {
+      model.value = QuestionState.Fill
+    }
   },
   { immediate: true },
-)
+);
+
+// on rajoute le empty pour si jamais la personne ne coche pas de réponse on puisse quand même soumettre à la correction nos réponses 
+watch(
+  model,
+  (NewModel1)=> {
+    if (NewModel1 === QuestionState.Submit){
+      model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
+    } else if (NewModel1=== QuestionState.Empty){
+      value.value = null
+    }
+  },
+);
+
 </script>
 
 <template>
@@ -43,6 +62,11 @@ watch(
       type="radio"
       :name="props.id"
       :value="option.value"
+      :disabled="
+        model === QuestionState.Submit ||
+        model === QuestionState.Correct ||
+        model === QuestionState.Wrong
+      "
     />
     <label class="form-check-label" :for="`${props.id}-${option.value}`">
       {{ option.text }}

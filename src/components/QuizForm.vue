@@ -1,64 +1,51 @@
 <script setup lang="ts">
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
+import { QuestionState } from '@/utils/models';
 import { computed, ref } from 'vue'
 
 const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
 const capitale = ref<string | null>(null) /*Création de mes différentes valeurs pour mes quiz */
-const correctAnswers = ref<boolean[]>([])
+const questionStates = ref<QuestionState[]>([])
 const score = computed<number>(
-  () => correctAnswers.value.filter((value) => value).length,
-) /*computed score qui calcule le score en fonction des valeurs de correctAnswers */
-const totalScore = computed<number>(
-  () => correctAnswers.value.length,
-) /*calcule le score maximal possible, en prenant seulement les valeurs correctes */
-const filled = computed<boolean>(
-  () => cheval.value !== null && pattes.value !== null && capitale.value !== null,
-) /*la propriété length retourne retourne le nombre de fois qu'il y true(le nombre de réponse juste)--> donc ici on dit que on veut toute les valeurs true et qu'on les comptes ce qui nous donne le score totale(le nombre de fois qu'on a true)  */
+  () =>
+    questionStates.value.filter(state => state === QuestionState.Correct)
+      .length,
+) /*computed score qui calcule le score en fonction des valeurs de questionStates */
+
+const totalScore = computed<number>(() => questionStates.value.length)
+ /*calcule le score maximal possible, en prenant seulement les valeurs correctes */
+ /*la propriété length retourne retourne le nombre de fois qu'il y true(le nombre de réponse juste)--> donc ici on dit que on veut toute les valeurs true et qu'on les comptes ce qui nous donne le score totale(le nombre de fois qu'on a true)  */
+
+
+ //every retourne true si toutes les valeurs du tableau satisfont la condition 
+ const filled = computed<boolean>(() =>
+  questionStates.value.every(state => state === QuestionState.Fill),
+)
+// submitted sera vrai seulement si l'utilisateur répond à toutes les questions
+const submitted = computed<boolean>(() => questionStates.value.every(state => state === QuestionState.Correct || state === QuestionState.Wrong))
+
 
 function submit(event: Event): void {
   event.preventDefault()
-  if (filled.value) {
-    /*alert(`Vous avez choisi la couleur ${cheval.value} !`)
-    alert(`Vous avez dit qu'il avait ${pattes.value} pattes !`)
-    alert(`Vous avez choisi comme capitale ${capitale.value} !`)*/
-  }
-  /*j'ai rajouter la méthode toLowerCase() qui permet de mettre la réponse de l'utilisateur en minuscules */
-  let score = 0
-
-  if (cheval.value?.toLowerCase() === 'blanc') {
-    score++
-  }
-
-  if (pattes.value?.toLowerCase() === '4') {
-    score++
-  }
-
-  if (capitale.value?.toLowerCase() === 'berne') {
-    score++
-  }
-  if (score === 3) {
-    alert('Félicitations, votre score est parfait !')
-  } else {
-    alert(`Votre score final est de ${score} sur 3.`)
-  }
+  questionStates.value = questionStates.value.map(() => QuestionState.Submit)
 }
 
 function reset(event: Event): void {
   event.preventDefault()
-
-  cheval.value = null
-  pattes.value = null
-  capitale.value = null
+  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
 }
+
 </script>
 
 <template>
   <form>
+    
     <!-- <QuestionRadio
       id="cheval"
-      v-model="correctAnswers[0]"
+      v-model="questionStates
+    [0]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
         { value: 'blanc', text: 'Blanc' },
@@ -72,7 +59,8 @@ function reset(event: Event): void {
 
     <QuestionText
       id="cheval"
-      v-model="correctAnswers[0]"
+      v-model="questionStates
+    [0]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       answer="blanc"
       placeholder="Veuillez saisir une couleur"
@@ -82,7 +70,8 @@ function reset(event: Event): void {
   <form>
     <QuestionRadio
       id="pattes"
-      v-model="correctAnswers[1]"
+      v-model="questionStates
+    [1]"
       text="Combien de pattes a un chat ?"
       :options="[
         { value: '2', text: '2' },
@@ -105,7 +94,8 @@ function reset(event: Event): void {
   <form>
     <QuestionRadio
       id="capitale"
-      v-model="correctAnswers[2]"
+      v-model="questionStates
+    [2]"
       text="Quelle est la capitale de la suisse ?"
       :options="[
         { value: 'zurich', text: 'Zurich' },
@@ -118,7 +108,8 @@ function reset(event: Event): void {
 
     <!-- <QuestionText
       id="capitale"
-      v-model="correctAnswers[]"
+      v-model="questionStates
+    []"
       text="Quelle est la capitale de la Suisse ?"
       placeholder="Veuillez saisir une ville"
     /> -->
@@ -132,7 +123,10 @@ function reset(event: Event): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" @click="reset">
       Réinitialiser
     </button>
-    <div>Réponses correctes : {{ correctAnswers }}</div> <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
-    <div>Score : {{ score }} / {{ totalScore }}</div>
+    <div>Réponses correctes : {{ questionStates
+   }}</div> <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div><!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
+    <div>Debug états : {{ questionStates }}</div>
+
   </form>
 </template>
