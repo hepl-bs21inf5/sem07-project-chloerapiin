@@ -109,5 +109,46 @@ il y aurai la manière avec la fonction submit comme on avait fait au début (av
 
     ### model.value =
     ### value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+######
+#If (newModel === QuestionState.Submit)#
+    if (value.value == props.answer){             #si la valeur entrée est correct(= à props.answer)alors 
+        model.value == QuestionState.Correct      #alors on assigne questionState.Correct à model.value
+    } else {                                      #sinon
+        model.value == QuestionState.Wrong        #on assigne question.Wrong à model.value
+    }
+######
+    ## AIDE:
+    //IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
+    //--> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
+    //--> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
+    //--> sinon on met à jour sous questionstate.wrong (mauvaise réponse)
 
-if
+    //ELSE IF : sinon si newModel est égale à questionstate.empty (pas de réponse)alors cela réinitialise la valeur a null
+    // sa permet de répondre à une seule question si l'on veut sans être dérangé par les questions auxquelles on n'a pas répondu
+    watch(
+    model,
+    (newModel) => {
+        if (newModel === QuestionState.Submit) {
+        model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
+        } else if (newModel === QuestionState.Empty){
+        value.value = null
+        }
+    },
+    );
+
+# Comment pourrait-on réécrire autrement la logique du watch sur value ?
+
+watch(
+  model,
+  (newModel) => {
+    if (newModel === QuestionState.Submit) { 
+        if (value.value == props.answer){             #si la valeur entrée est correct(= à props.answer)alors 
+            model.value == QuestionState.Correct      #alors on assigne questionState.Correct à model.value
+        } else {                                      #sinon
+            model.value == QuestionState.Wrong        #on assigne question.Wrong à model.value
+        }
+    } else if (newModel === QuestionState.Empty){     #si l'utilisateur ne donne pas de réponse alors newModel est égale à QuestionState.Empty
+      value.value = null                              # donc la valeur est null
+    }
+  },
+);
