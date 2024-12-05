@@ -135,10 +135,14 @@ il y aurai la manière avec la fonction submit comme on avait fait au début (av
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
-    ### model.value =
-    ### value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+````
+{
+    "model.value" = ""
+    "value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
+}
+```
 
-######
+
 
 #If (newModel === QuestionState.Submit)#
 if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
@@ -147,10 +151,11 @@ model.value == QuestionState.Correct #alors on assigne questionState.Correct à 
 model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
 }
 
-######
 
-    ## AIDE:
-    //IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
+
+AIDE:
+
+//IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     //--> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
     //--> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
     //--> sinon on met à jour sous questionstate.wrong (mauvaise réponse)
