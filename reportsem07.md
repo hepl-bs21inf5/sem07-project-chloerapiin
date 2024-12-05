@@ -143,13 +143,15 @@ il y aurai la manière avec la fonction submit comme on avait fait au début (av
 ```
 
 
-
-#If (newModel === QuestionState.Submit)#
+````
+{
+If (newModel === QuestionState.Submit)#
 if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
 model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
 } else { #sinon
 model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
 }
+```
 
 
 
