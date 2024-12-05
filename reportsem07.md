@@ -114,6 +114,7 @@ const score = computed<number>(
 
 + cette méthode est plus courte et concise
 
+
 - elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
 
 
