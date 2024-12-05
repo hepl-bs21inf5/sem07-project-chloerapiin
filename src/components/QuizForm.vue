@@ -95,14 +95,14 @@ function reset(event: Event): void {
       id="capitale"
       v-model="questionStates
     [2]"
-      text="Quelle est la capitale de la suisse ?"
+      text="Quelle est la capitale de la Suisse ?"
       :options="[
         { value: 'zurich', text: 'Zurich' },
         { value: 'lausanne', text: 'Lausanne' },
         { value: 'berne', text: 'Berne' },
         { value: 'geneve', text: 'Geneve' },
       ]"
-      answer="berne"
+      answer="Berne"
     />
 
     <!-- <QuestionText
@@ -113,7 +113,7 @@ function reset(event: Event): void {
       placeholder="Veuillez saisir une ville"
     /> -->
 
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+    <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
     <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
     <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">Recommencer</button>-->
     <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">recommencer</button>-->
@@ -124,8 +124,8 @@ function reset(event: Event): void {
     </button>
     <div>Réponses correctes : {{ questionStates
    }}</div> <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div><!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
     <div>Debug états : {{ questionStates }}</div>
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div><!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
 
   </form>
 </template>

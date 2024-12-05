@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import QuestionRadio from '@/components/QuestionRadio.vue'
+import type { QuestionState } from '@/utils/models';
 import { reactive, ref } from 'vue'
 /*stocker les questions dans la ref questions */
 const questions = ref<

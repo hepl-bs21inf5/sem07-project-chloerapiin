@@ -9,3 +9,4 @@ export enum QuestionState {
   Correct = 'Correct',/*la réponse est juste */
   Wrong = 'Wrong',/*la réponse est fausse */
 }
+

@@ -157,12 +157,12 @@ model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
 
 
 ```python
-IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
+if: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     --> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
     --> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
     --> sinon on met à jour sous questionstate.wrong (mauvaise réponse)
 
-    ELSE IF : sinon si newModel est égale à questionstate.empty (pas de réponse)alors cela réinitialise la valeur a null
+    else if : sinon si newModel est égale à questionstate.empty (pas de réponse)alors cela réinitialise la valeur a null
      sa permet de répondre à une seule question si l'on veut sans être dérangé par les questions auxquelles on n'a pas répondu
     watch(
     model,
