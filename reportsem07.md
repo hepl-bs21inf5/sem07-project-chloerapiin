@@ -111,10 +111,11 @@ const score = computed<number>(
 #filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
 #length : calcul le nombre de réponses correctes
 
-{
-    #+ cette méthode est plus courte et concise
-    #- elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
-}
+
++ cette méthode est plus courte et concise
+
+- elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
+
 
 2e méthode :
 function submit(event: Event): void {
