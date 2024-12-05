@@ -34,13 +34,13 @@ watch(
   { immediate: true },
 );
 
-// on rajoute le empty pour si jamais la personne ne coche pas de réponse on puisse quand même soumettre à la correction nos réponses 
+//on rajoute le empty pour si jamais la personne ne coche pas de réponse on puisse quand même soumettre à la correction nos réponses 
 watch(
   model,
-  (NewModel1)=> {
-    if (NewModel1 === QuestionState.Submit){
+  (newModel1)=> {
+    if (newModel1 === QuestionState.Submit){
       model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-    } else if (NewModel1=== QuestionState.Empty){
+    } else if (newModel1=== QuestionState.Empty){
       value.value = null
     }
   },

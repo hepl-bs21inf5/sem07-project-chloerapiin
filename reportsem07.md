@@ -112,10 +112,10 @@ const score = computed<number>(
 #length : calcul le nombre de réponses correctes
 
 
-+ cette méthode est plus courte et concise
++ +cette méthode est plus courte et concise
 
 
-- elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
+- -elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
 
 
 2e méthode :
@@ -132,12 +132,11 @@ alert(`Votre score est de ${score} sur 2`)
 }
 #dans cette méthode, on calcul le score en fonction des réponses données pour chaque question et si elles sont juste alors on ajoute 1 à notre score
 
-#+ plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
++ +:plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
 
 
-#- plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
+- -:plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
 
-il y aurai la manière avec la fonction submit comme on avait fait au début (avec les conditon if)
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
