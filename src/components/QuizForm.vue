@@ -1,30 +1,31 @@
 <script setup lang="ts">
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
-import { QuestionState } from '@/utils/models';
+import { QuestionState } from '@/utils/models'
 import { computed, ref } from 'vue'
 
-const cheval = ref<string | null>(null)
-const pattes = ref<string | null>(null)
-const capitale = ref<string | null>(null) //Création de mes différentes valeurs pour mes quiz 
+// const cheval = ref<string | null>(null)
+// const pattes = ref<string | null>(null)
+// const capitale = ref<string | null>(null) //Création de mes différentes valeurs pour mes quiz
 const questionStates = ref<QuestionState[]>([])
 const score = computed<number>(
-  () =>
-    questionStates.value.filter(state => state === QuestionState.Correct)
-      .length,
-) //computed score qui calcule le score en fonction des valeurs de questionStates 
+  () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
+) //computed score qui calcule le score en fonction des valeurs de questionStates
 
 const totalScore = computed<number>(() => questionStates.value.length)
- //calcule le score maximal possible, en prenant seulement les valeurs correctes 
- //la propriété length retourne retourne la longueur de la liste
+//calcule le score maximal possible, en prenant seulement les valeurs correctes
+//la propriété length retourne retourne la longueur de la liste
 
- //every retourne true si toutes les valeurs du tableau satisfont la condition 
- const filled = computed<boolean>(() =>
-  questionStates.value.every(state => state === QuestionState.Fill),
+//every retourne true si toutes les valeurs du tableau satisfont la condition
+const filled = computed<boolean>(() =>
+  questionStates.value.every((state) => state === QuestionState.Fill),
 )
 // submitted sera vrai seulement si l'utilisateur répond à toutes les questions
-const submitted = computed<boolean>(() => questionStates.value.every(state => state === QuestionState.Correct || state === QuestionState.Wrong))
-
+const submitted = computed<boolean>(() =>
+  questionStates.value.every(
+    (state) => state === QuestionState.Correct || state === QuestionState.Wrong,
+  ),
+)
 
 function submit(event: Event): void {
   event.preventDefault()
@@ -35,12 +36,10 @@ function reset(event: Event): void {
   event.preventDefault()
   questionStates.value = questionStates.value.map(() => QuestionState.Empty)
 }
-
 </script>
 
 <template>
   <form>
-    
     <!-- <QuestionRadio
       id="cheval"
       v-model="questionStates
@@ -58,19 +57,19 @@ function reset(event: Event): void {
 
     <QuestionText
       id="cheval"
-      v-model="questionStates
-    [0]"
+      v-model="questionStates[0]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       answer="blanc"
       placeholder="Veuillez saisir une couleur"
     />
   </form>
 
+  <div class="mb-4"></div>
+
   <form>
     <QuestionRadio
       id="pattes"
-      v-model="questionStates
-    [1]"
+      v-model="questionStates[1]"
       text="Combien de pattes a un chat ?"
       :options="[
         { value: '2', text: '2' },
@@ -82,6 +81,7 @@ function reset(event: Event): void {
     />
   </form>
 
+  <div class="mb-4"></div>
   <!-- <QuestionText
       id="pattes"
       v-model="pattes"
@@ -93,17 +93,18 @@ function reset(event: Event): void {
   <form>
     <QuestionRadio
       id="capitale"
-      v-model="questionStates
-    [2]"
+      v-model="questionStates[2]"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
-        { value: 'zurich', text: 'Zurich' },
-        { value: 'lausanne', text: 'Lausanne' },
-        { value: 'berne', text: 'Berne' },
-        { value: 'geneve', text: 'Geneve' },
+        { value: 'Zurich', text: 'Zurich' },
+        { value: 'Lausanne', text: 'Lausanne' },
+        { value: 'Berne', text: 'Berne' },
+        { value: 'Geneve', text: 'Geneve' },
       ]"
       answer="Berne"
     />
+
+    <div class="mb-4"></div>
 
     <!-- <QuestionText
       id="capitale"
@@ -113,19 +114,157 @@ function reset(event: Event): void {
       placeholder="Veuillez saisir une ville"
     /> -->
 
-    <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
-    <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
-    <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">Recommencer</button>-->
-    <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">recommencer</button>-->
-    <!--<button class="btn btn-secondary" type="button" @click="reset">Recommencer</button>-->
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[3]"
+        text="Quelle théorie de l'apprentissage se concentre sur l'observation et l'imitation du comportement des autres ?"
+        :options="[
+          { value: 'a', text: 'La théorie du conditionnement classique' },
+          { value: 'b', text: 'La théorie de l\'apprentissage social' },
+          { value: 'c', text: 'La théorie de l\'apprentissage cognitif' },
+          { value: 'd', text: ' La théorie de l\'apprentissage par renforcement' },
+        ]"
+        answer="b"
+      />
+    </form>
 
-    <button class="btn btn-primary" :class="{ disabled: !filled }" @click="reset">
-      Réinitialiser
-    </button>
-    <div>Réponses correctes : {{ questionStates
-   }}</div> <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
-    <div>Debug états : {{ questionStates }}</div>
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div><!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
+    <div class="mb-4"></div>
 
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[4]"
+        text="Qui est le principal auteur associé à la théorie du conditionnement opérant ?"
+        :options="[
+          { value: 'a', text: 'Jean Piaget' },
+          { value: 'b', text: 'B.F. Skinner' },
+          { value: 'c', text: 'Lev Vygotsky' },
+          { value: 'd', text: 'Albert Bandura' },
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <div class="mb-4"></div>
+
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[5]"
+        text="Quelle est la principale différence entre le conditionnement classique et le conditionnement opérant ?"
+        :options="[
+          {
+            value: 'a',
+            text: 'Le conditionnement classique implique des conséquences sur le comportement',
+          },
+          {
+            value: 'b',
+            text: 'Le conditionnement opérant n\'implique pas de conséquences sur le comportement',
+          },
+          {
+            value: 'c',
+            text: 'Le conditionnement classique n\'implique pas de conséquences sur le comportement',
+          },
+          { value: 'd', text: 'Les deux types de conditionnement sont identiques' },
+        ]"
+        answer="c"
+      />
+    </form>
+
+    <div class="mb-4"></div>
+
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[6]"
+        text="Dans le conditionnement classique, le Stimulus Conditionnel (SC) est :"
+        :options="[
+          { value: 'a', text: 'Un stimulus qui provoque une réponse inconditionnelle' },
+          {
+            value: 'b',
+            text: 'Un stimulus qui provoque une réponse conditionnelle après conditionnement',
+          },
+          { value: 'c', text: 'Un stimulus qui n\'a aucun effet sur le comportement' },
+          { value: 'd', text: 'Un stimulus qui est toujours aversif' },
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <div class="mb-4"></div>
+
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[7]"
+        text="Qu'est-ce qui implique l'ajout d'un stimulus appétitif pour augmenter la probsbilité que le comportement se reproduise ?"
+        :options="[
+          { value: 'a', text: 'Renforcement négatif' },
+          { value: 'b', text: 'Punition positive' },
+          { value: 'c', text: 'Renforcement positif' },
+          { value: 'd', text: 'Punition négative' },
+        ]"
+        answer="c"
+      />
+    </form>
+
+    <div class="mb-4"></div>
+
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[8]"
+        text="Quel est l'effet de l'effet d'espacement sur l'apprentissage ?"
+        :options="[
+          { value: 'a', text: 'Il diminue la rétention d\'information' },
+          { value: 'b', text: 'Il augmente la rétention d\'information' },
+          { value: 'c', text: 'Il n\'a aucun effet sur l\'apprentissage.' },
+          { value: 'd', text: 'Il rend l\'apprentissage plus difficile.' },
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <div class="mb-4"></div>
+
+    <form>
+      <QuestionRadio
+        id="TAD"
+        v-model="questionStates[9]"
+        text="Selon Jean Piaget, quel est un des critères qui définit l'intelligence ?"
+        :options="[
+          { value: 'a', text: 'La capacité à mémoriser des informations' },
+          { value: 'b', text: 'La capacité à s\'adapter à de nouvelles situations' },
+          { value: 'c', text: 'La capacité à résoudre des problèmes mathématiques' },
+          { value: 'd', text: 'La capacité à communiquer efficacement.' },
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <div class="mb-4"></div>
   </form>
+  <QuestionText
+    id="TAD"
+    v-model="questionStates[10]"
+    text="Expliquez le concept de renforcement négatif et donnez un exemple de son application dans un contexte éducatif"
+    answer="s"
+    placeholder="Veuillez répondre"
+  />
+
+  <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
+  <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
+  <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">Recommencer</button>-->
+  <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">recommencer</button>-->
+  <!--<button class="btn btn-secondary" type="button" @click="reset">Recommencer</button>-->
+
+  <button class="btn btn-primary" :class="{ disabled: !filled }" @click="reset">
+    Réinitialiser
+  </button>
+  <div>Réponses correctes : {{ questionStates }}</div>
+  <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
+  <div>Debug états : {{ questionStates }}</div>
+  <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+  <!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
 </template>

@@ -49,21 +49,30 @@ Seminaire 06 - Outils
 |                 |                                                                                                                                               |
 
 option + shift + F pour formater le tableau
+command + shift + V pour prévisualiser le rapport 
 
-# Le rôle des fichiers suivants :
-main.ts
-main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
-App.vue: icône navabar
-router/index.ts
-AboutView.vue
-HomeView.vue
-QuizForm.vue: code html de base
+## Le rôle des fichiers suivants :
 
-# Dans le fichier QuizForm.vue :
++ main.ts
 
-## Quelles sont les similarités et les différences entre ref et computed ?
++ main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
 
-ce sont tous les deux des "variables", sauf que computed est mis à jour automatiquement selon d'autres "variables"
++ App.vue: icône navabar
+
++ router/index.ts
+
++ AboutView.vue
+
++ HomeView.vue
+
++ QuizForm.vue: code html de base
+
+## Dans le fichier QuizForm.vue :
+
+### Quelles sont les similarités et les différences entre ref et computed ?
+
+Ce sont tous les deux des "variables", sauf que computed est mis à jour automatiquement selon d'autres "variables"
+
 --> ref est une variable qu'on met à jour nous-mêmes, alors que computed se met à jour automatiquement en fonction d'autres "variables".
 
 ## Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?
@@ -72,15 +81,18 @@ il verifie chaque réponse entrée par l'utilisateur et calcul le nombre de rép
 
 ## Qu'est-ce qu'un v-model ?
 
-ça permet de stocker une variable qui peut changer, comme dans mon quiz ou ça peut être cheval/pattes/capitale
+Ca permet de stocker une variable qui peut changer, comme dans mon quiz ou ça peut être cheval/pattes/capitale
 
 ## À quoi sert le :class="{ disabled: !filled }" ?
 
-:disabled permet de cibler un élément désactivé --> permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
+:disabled permet de cibler un élément désactivé 
+
+--> permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
 
 # Comment rendre la propriété placeholder optionnelle ?
 
 required: Définit si l'accessoire est nécessaire.
+
 En mettant required: false, la propriété devient optionnelle. Même avant l'exécution, l'erreur est déjà signalée, ce qui empêche Vue de générer une erreur si la prop n'est pas donnée lors de l'exécution.
 
 # Le composant QuestionRadio doit recevoir les propriétés suivantes :
@@ -140,24 +152,24 @@ alert(`Votre score est de ${score} sur 2`)
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
-````
-{
+
     "model.value" = ""
     "value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
-}
-```
 
-```javascript
-If (newModel === QuestionState.Submit)#
-    if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
-model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
-} else { #sinon
-model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
+...
 
+    if (newModel === QuestionState.Submit) {
+  
+        if (value.value === props.answer) {       | si la valeur entrée est correct(= à props.answer)
+            model.value = QuestionState.Correct;  | alors on assigne questionState.Correct à model value
 
+        } else {                                  | Si la réponse est incorrecte
+            model.value = QuestionState.Wrong;    | alors on assigne questionState.Wrong à model value
+        }
+    }
 
-```python
-if: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
+   ## Aide
+    if: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     --> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
     --> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
     --> sinon on met à jour sous questionstate.wrong (mauvaise réponse)
@@ -177,17 +189,17 @@ if: si newModele est égale a questionstate ca veut dire que la réponse à ét�
 
 # Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
-watch(
-model,
-(newModel) => {
-if (newModel === QuestionState.Submit) {
-if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
-model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
-} else { #sinon
-model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
-}
-} else if (newModel === QuestionState.Empty){ #si l'utilisateur ne donne pas de réponse alors newModel est égale à QuestionState.Empty
-value.value = null # donc la valeur est null
-}
-},
-);
+    watch(
+        model,
+        (newModel) => {
+            if (newModel === QuestionState.Submit) {
+                if (value.value == props.answer){ #si la valeur entrée est correct(= à props.answer)alors
+                    model.value == QuestionState.Correct #alors on assigne questionState.Correct à model.value
+                } else { #sinon
+                    model.value == QuestionState.Wrong #on assigne question.Wrong à model.value
+    }
+            } else if (newModel === QuestionState.Empty){ #si l'utilisateur ne donne pas de réponse alors newModel est égale à QuestionState.Empty
+                value.value = null # donc la valeur est null
+            }
+        },
+    );
