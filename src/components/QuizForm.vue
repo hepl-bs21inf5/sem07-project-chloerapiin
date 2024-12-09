@@ -3,6 +3,7 @@ import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 import { QuestionState } from '@/utils/models'
 import { computed, ref } from 'vue'
+import QuestionCheckbox from './QuestionCheckbox.vue'
 
 // const cheval = ref<string | null>(null)
 // const pattes = ref<string | null>(null)
@@ -252,6 +253,9 @@ function reset(event: Event): void {
     answer="s"
     placeholder="Veuillez répondre"
   />
+  </form>
+  <QuestionCheckbox
+    id="TAD"
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->

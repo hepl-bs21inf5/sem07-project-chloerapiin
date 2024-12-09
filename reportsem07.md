@@ -8,7 +8,7 @@ Seminaire 06 - Outils
 
 ## Semaine 7
 
-### 0. Temps éstimé
+# 1. Temps éstimé
 
 | **Tâches**      | **Temps estimé** | **Temps passé** | **Commentaire**                                                                                           |
 | --------------- | ---------------- | --------------- | --------------------------------------------------------------------------------------------------------- |
@@ -40,32 +40,39 @@ Seminaire 06 - Outils
 |                     |                                                                                    |                   |
 |                     |                                                                                    |                   |
 
-# 4. Suite du projet
+# 3. Suite du projet
 
-| **Suite**       | **Description**                                                                                                                               |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| contact 1h      | j'ai repris le code du formulaire qu'on avait fait pour l'aventure et je l'ai réutilisé pour ma page de contact, qui s'appele ContactView,vue |
-| parametre 10min | j'ai juste créé une page ParametreView.vue pour mettre le titre parametre                                                                     |
-|                 |                                                                                                                                               |
+| **Suite**        | **Description**                                                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| contact (1h)     | j'ai repris le code du formulaire qu'on avait fait pour l'aventure et je l'ai réutilisé pour ma page de contact, qui s'appele ContactView,vue |
+| parametre(10min) | j'ai juste créé une page ParametreView.vue pour mettre le titre parametre                                                                     |
+| + de question    | j'ai rajouter des questions en lien avec mon cours de théorie de l'apprentissage                                                              |
+|                  |                                                                                                                                               |
+|                  |                                                                                                                                               |
+|                  |                                                                                                                                               |
+|                  |                                                                                                                                               |
+|                  |                                                                                                                                               |
 
 option + shift + F pour formater le tableau
-command + shift + V pour prévisualiser le rapport 
+command + shift + V pour prévisualiser le rapport
+
+# Questions sur le projet
 
 ## Le rôle des fichiers suivants :
 
-+ main.ts
+- main.ts:
 
-+ main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
+- main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
 
-+ App.vue: icône navabar
+- App.vue: icône navabar
 
-+ router/index.ts
+- router/index.ts:
 
-+ AboutView.vue
+- AboutView.vue:
 
-+ HomeView.vue
+- HomeView.vue:
 
-+ QuizForm.vue: code html de base
+- QuizForm.vue: code html de base
 
 ## Dans le fichier QuizForm.vue :
 
@@ -85,7 +92,7 @@ Ca permet de stocker une variable qui peut changer, comme dans mon quiz ou ça p
 
 ## À quoi sert le :class="{ disabled: !filled }" ?
 
-:disabled permet de cibler un élément désactivé 
+:disabled permet de cibler un élément désactivé
 
 --> permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
 
@@ -123,12 +130,9 @@ const score = computed<number>(
 #filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
 #length : calcul le nombre de réponses correctes
 
+- +cette méthode est plus courte et concise
 
-+ +cette méthode est plus courte et concise
-
-
-- -elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
-
+* -elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
 
 2e méthode :
 function submit(event: Event): void {
@@ -144,14 +148,11 @@ alert(`Votre score est de ${score} sur 2`)
 }
 #dans cette méthode, on calcul le score en fonction des réponses données pour chaque question et si elles sont juste alors on ajoute 1 à notre score
 
-+ +:plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
+- +:plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
 
-
-- -:plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
-
+* -:plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
-
 
     "model.value" = ""
     "value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
@@ -159,7 +160,7 @@ alert(`Votre score est de ${score} sur 2`)
 ...
 
     if (newModel === QuestionState.Submit) {
-  
+
         if (value.value === props.answer) {       | si la valeur entrée est correct(= à props.answer)
             model.value = QuestionState.Correct;  | alors on assigne questionState.Correct à model value
 
@@ -168,7 +169,8 @@ alert(`Votre score est de ${score} sur 2`)
         }
     }
 
-   ## Aide
+## Aide
+
     if: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     --> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
     --> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
