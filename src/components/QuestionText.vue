@@ -3,12 +3,14 @@ import { ref, watch } from 'vue'
 
 import { QuestionState } from '@/utils/models'
 
-const model = defineModel<QuestionState>()
+//définit le modèle d'état pour la question
+const model = defineModel<QuestionState>(QuestionState.Empty)
 //définir les props 
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: { type: String, required: true },
+  answerDetail: { type: String, default: "" },
   placeholder: {
     type: String,
     required: false, //si il y a une valeur par défaut, la props est optionnelle  
@@ -50,6 +52,7 @@ watch(
 );
 
 
+
 </script>
 <template>
   <!--Attention on doit utiliser les props pour définir chaque variable-->
@@ -67,5 +70,23 @@ watch(
         model === QuestionState.Wrong
       "
     />
+
+  </div>
+
+    <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
+      <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+      <p v-else class="text-danger">
+        Faux ! La réponse était : {{ props.answer }}
+    </p>
+    <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
+
+<style scoped>
+  .text-danger {
+    color: red !important;
+  }
+  .text-success {
+    color: greenyellow !important;
+  }
+</style>

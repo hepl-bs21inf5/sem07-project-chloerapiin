@@ -30,6 +30,15 @@ Seminaire 06 - Outils
 | états et bouton | 1h               | 2h45            | étape très longue et assez fastidieuse, j'ai du faire beaucoup de recherche et m'aider des solutions, car |
 |                 |                  |                 | je n'avais jamais les choses justes...donc je ne suis èas sûre d'avoir réellemnt compris comment faire... |
 | réponses immuab | 10min            | 2min            |                                                                                                           |
+| réponse detaill | 1h               | 1h              |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
+|                 |                  |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
 
 # 2. Difficultés rencontrées et solutions trouvées
@@ -205,3 +214,19 @@ alert(`Votre score est de ${score} sur 2`)
             }
         },
     );
+
+# Questions
+
+## Ajouter ce computed dans QuestionRadio.vue :
+
+    const answerText = computed<string>(
+    () =>
+        props.options.find((option) => option.value === props.answer)?.text ??
+        props.answer,
+    );
+
+Remplacer {{ props.answer }} par {{ answerText }} dans le template.
+
+Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
+
+on fait ce changement

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
-  ref,
+  ref, 
+  computed,
   watch,
   type PropType,
 } from 'vue' //defineModel et defineProps pour définir le modèle (v-model) et les propriétés (text, name, options) du composant. 
@@ -12,6 +13,7 @@ const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: { type: String, required: true },//on ajoute une nouvelle propriété qui va contenir la reponse correcte 
+  answerDetail: { type: String, default: "" },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
@@ -19,6 +21,12 @@ const props = defineProps({
 })
 
 const value = ref<string | null>(null) ///ajouter la const (ref,value) pour la valeur de réponse de l'utilisateur 
+
+const answerText = computed<string>(
+  () =>
+    props.options.find((option) => option.value === props.answer)?.text ??
+    props.answer,
+);
 
 //la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change 
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
@@ -72,4 +80,22 @@ watch(
       {{ option.text }}
     </label>
   </div>
+
+  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
+    <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+    <p v-else class="text-danger">
+      Faux ! La réponse était : {{ answerText }}
+    </p>
+    <p class="blockquote-footer">{{ props.answerDetail }}</p>
+  </div>
+  
 </template>
+
+<style scoped>
+  .text-danger {
+    color: red !important;
+  }
+  .text-success {
+    color: greenyellow !important;
+  }
+</style>
