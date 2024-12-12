@@ -3,7 +3,7 @@ import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 import { QuestionState } from '@/utils/models'
 import { computed, ref } from 'vue'
-import QuestionCheckbox from './QuestionCheckbox.vue'
+// import QuestionCheckbox from './QuestionCheckbox.vue'
 
 // const cheval = ref<string | null>(null)
 // const pattes = ref<string | null>(null)
@@ -56,6 +56,7 @@ function reset(event: Event): void {
     />
   </form> -->
 
+  </form>
     <QuestionText
       id="cheval"
       v-model="questionStates[0]"
@@ -104,8 +105,9 @@ function reset(event: Event): void {
       ]"
       answer="Berne"
     />
+  </form>
 
-    <div class="mb-4"></div>
+  <div class="mb-4"></div>
 
     <!-- <QuestionText
       id="capitale"
@@ -115,9 +117,9 @@ function reset(event: Event): void {
       placeholder="Veuillez saisir une ville"
     /> -->
 
-    <form>
+  <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD1"
         v-model="questionStates[3]"
         text="Quelle théorie de l'apprentissage se concentre sur l'observation et l'imitation du comportement des autres ?"
         :options="[
@@ -134,7 +136,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD2"
         v-model="questionStates[4]"
         text="Qui est le principal auteur associé à la théorie du conditionnement opérant ?"
         :options="[
@@ -151,7 +153,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD3"
         v-model="questionStates[5]"
         text="Quelle est la principale différence entre le conditionnement classique et le conditionnement opérant ?"
         :options="[
@@ -177,7 +179,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD4"
         v-model="questionStates[6]"
         text="Dans le conditionnement classique, le Stimulus Conditionnel (SC) est :"
         :options="[
@@ -197,7 +199,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD5"
         v-model="questionStates[7]"
         text="Qu'est-ce qui implique l'ajout d'un stimulus appétitif pour augmenter la probsbilité que le comportement se reproduise ?"
         :options="[
@@ -214,7 +216,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD6"
         v-model="questionStates[8]"
         text="Quel est l'effet de l'effet d'espacement sur l'apprentissage ?"
         :options="[
@@ -231,7 +233,7 @@ function reset(event: Event): void {
 
     <form>
       <QuestionRadio
-        id="TAD"
+        id="TAD7"
         v-model="questionStates[9]"
         text="Selon Jean Piaget, quel est un des critères qui définit l'intelligence ?"
         :options="[
@@ -245,17 +247,65 @@ function reset(event: Event): void {
     </form>
 
     <div class="mb-4"></div>
-  </form>
-  <QuestionText
-    id="TAD"
-    v-model="questionStates[10]"
-    text="Expliquez le concept de renforcement négatif et donnez un exemple de son application dans un contexte éducatif"
-    answer="s"
-    placeholder="Veuillez répondre"
-  />
-  </form>
+
+    </form>
+      <QuestionText
+        id="TAD8"
+        v-model="questionStates[10]"
+        text="Expliquez le concept de renforcement négatif et donnez un exemple de son application dans un contexte éducatif"
+        answer="s"
+        placeholder="Veuillez répondre"
+      />
+
+    <div class="mb-4"></div>
+    
+    <form>
+      <QuestionRadio
+        id="TAD9"
+        v-model="questionStates[11]"
+        text="Quelle est la différence majeure entre le conditionnement classique et le conditionnement opérant ?"
+        :options="[
+          { value: 'a', text: 'Le conditionnement classique implique des conséquences sur le comportement' },
+          { value: 'b', text: 'Le conditionnement opérant modifie un comportement instinctif' },
+          { value: 'c', text: 'Le conditionnement classique ne modifie pas les comportements instinctifs' },
+          { value: 'd', text: 'Les deux utilisent uniquement des stimuli neutres' }
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <form>
+      <QuestionRadio
+        id="TAD10"
+        v-model="questionStates[12]"
+        text="Dans le renforcement négatif, que se passe-t-il ?"
+        :options="[
+          { value: 'a', text: 'Un stimulus appétitif est ajouté' },
+          { value: 'b', text: 'Un stimulus aversif est retiré' },
+          { value: 'c', text: 'Un comportement est puni' },
+          { value: 'd', text: 'Un comportement est ignoré' }
+        ]"
+        answer="b"
+      />
+    </form>
+
+    <form>
+      <QuestionRadio
+        id="TAD11"
+        v-model="questionStates[13]"
+        text="Selon Piaget, quelle est une des caractéristiques de l’intelligence humaine ?"
+        :options="[
+          { value: 'a', text: 'La capacité à mémoriser' },
+          { value: 'b', text: 'L’introduction de continuité dans l’activité mentale' },
+          { value: 'c', text: 'La capacité à analyser des objets concrets uniquement' },
+          { value: 'd', text: 'L’acquisition automatique des langages' }
+        ]"
+        answer="b"
+      />
+    </form>
+  <!-- </form>
   <QuestionCheckbox
-    id="TAD"
+    id="TAD" -->
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
