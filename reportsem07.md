@@ -6,8 +6,6 @@ Seminaire 06 - Outils
 
 ## 7 novembre 2024 au 26 décembre 2024
 
-## Semaine 7
-
 # 1. Temps éstimé
 
 | **Tâches**      | **Temps estimé** | **Temps passé** | **Commentaire**                                                                                           |
@@ -30,11 +28,11 @@ Seminaire 06 - Outils
 | états et bouton | 1h               | 2h45            | étape très longue et assez fastidieuse, j'ai du faire beaucoup de recherche et m'aider des solutions, car |
 |                 |                  |                 | je n'avais jamais les choses justes...donc je ne suis èas sûre d'avoir réellemnt compris comment faire... |
 | réponses immuab | 10min            | 2min            |                                                                                                           |
-| réponse detaill | 1h               | 1h              |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
+| réponse detaill | 1h               | 1h              | C'est pratique pour les question texte libre, car sa permet de laisser l'utilisateur répondre librement   |
+|                 |                  |                 | et on lui donne juste une réponse générale dans le answerdetails sans mettre de juste ou de faux          |
+| style           | 20min            | 5min            | enfaite il faut juste copier et ensuite ça nous permet de mettre des couleurs pour les répnses si c'est   |
+|                 |                  |                 | juste ou si c'est faux                                                                                    |
+| déploiement     | 30min            |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
@@ -89,7 +87,7 @@ command + shift + V pour prévisualiser le rapport
 
 Ce sont tous les deux des "variables", sauf que computed est mis à jour automatiquement selon d'autres "variables"
 
---> ref est une variable qu'on met à jour nous-mêmes, alors que computed se met à jour automatiquement en fonction d'autres "variables".
+- ref est une variable qu'on met à jour nous-mêmes, alors que computed se met à jour automatiquement en fonction d'autres "variables".
 
 ## Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?
 
@@ -103,7 +101,14 @@ Ca permet de stocker une variable qui peut changer, comme dans mon quiz ou ça p
 
 :disabled permet de cibler un élément désactivé
 
---> permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
+- permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
+
+# Quelle est la différence entre un prop et un modèle (v-model)?
+
+- Un prop : c'est toute les données d'un composant (exemple : texte, les options, la réponse correcte, etc.)
+- un v-model : c'est ce qui lie les valeurs de l'utilisateur et les données du composant de base
+
+Je ne suis pas trop sûre de mes réponses si je mélange les données du composant avce les réponses de l'utilisateur ... ?
 
 # Comment rendre la propriété placeholder optionnelle ?
 
@@ -113,13 +118,13 @@ En mettant required: false, la propriété devient optionnelle. Même avant l'ex
 
 # Le composant QuestionRadio doit recevoir les propriétés suivantes :
 
-v-model : la valeur de la réponse (bi-directionnel, car on veut pouvoir modifier la réponse depuis le composant parent lorsqu'on clique sur le bouton "Réinitialiser" et récupérer la réponse depuis le composant parent pour calculer le score).
++ v-model : la valeur de la réponse (bi-directionnel, car on veut pouvoir modifier la réponse depuis le composant parent lorsqu'on clique sur le bouton "Réinitialiser" et récupérer la réponse depuis le composant parent pour calculer le score).
 
-id : un identifiant unique pour le groupe de boutons radio.
++ id : un identifiant unique pour le groupe de boutons radio.
 
-text : le texte de la question.
++ text : le texte de la question.
 
-options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.
++ options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.
 
 # À quoi sert l'option immediate: true dans le watch ?
 
@@ -163,6 +168,7 @@ alert(`Votre score est de ${score} sur 2`)
 
 # Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
+```TS
     "model.value" = ""
     "value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
 
@@ -177,6 +183,7 @@ alert(`Votre score est de ${score} sur 2`)
             model.value = QuestionState.Wrong;    | alors on assigne questionState.Wrong à model value
         }
     }
+```
 
 ## Aide
 
@@ -200,6 +207,7 @@ alert(`Votre score est de ${score} sur 2`)
 
 # Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
+```TS
     watch(
         model,
         (newModel) => {
@@ -214,19 +222,55 @@ alert(`Votre score est de ${score} sur 2`)
             }
         },
     );
+```
 
 # Questions
 
 ## Ajouter ce computed dans QuestionRadio.vue :
 
+```TS
     const answerText = computed<string>(
     () =>
         props.options.find((option) => option.value === props.answer)?.text ??
         props.answer,
     );
+```
 
 Remplacer {{ props.answer }} par {{ answerText }} dans le template.
 
 Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
 
-on fait ce changement
+- on fait ce changement
+
+## question du mardi 17 décembre du prof : comment êtes-vous arrivée à cette solution ?
+
+J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaires :
+
+```TS
+    watch(
+    value,
+    (newValues) => {
+        if (model.value !== QuestionState.Submit) {           // si l'utilisateur sélectionne une/des réponses
+        model.value = QuestionState.Fill                    //l'état de la question est fill = remplie
+        }
+        else if (newValues.length === null) {                  //si aucune réponse n'est selectionné alors le tableau avec les réponses est vide
+        model.value = QuestionState.Empty                    //l'état de la question est empty = vide
+        }
+    },
+    { immediate: true },
+    )
+
+
+
+    watch(model, (newModel) => {
+    if (newModel === QuestionState.Submit) {                                      //si l'utilisateur soumet la question
+        const isCorrect =                                                           // vérification de si les réponses sont correcte
+        props.answer.length === value.value.length &&                             // vérifie si le nombre de réponse soumises égale au nombre de réponses justes
+        props.answer.every((val) => value.value.includes(val))                    // Vérifie que chaque réponse juste là
+        model.value = isCorrect ? QuestionState.Correct : QuestionState.Wrong       //si les réponse sont justes alors on définit l'état correct
+                                                                                    //si les réponses sont fausses alors on définit l'état incorrect
+    } else if (newModel === QuestionState.Empty) {                                //sinon si l'utilisateur ne rentre pas de réponse alors on mets l'état empty = vide
+        value.value = []
+    }
+    })
+```

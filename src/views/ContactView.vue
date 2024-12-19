@@ -98,12 +98,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ContactView',
-}
-</script>
-
 <style scoped>
 /* Tu peux personnaliser les styles CSS ici */
 .card {

@@ -112,15 +112,16 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
         { value: 'bleu', text: 'Bleu' }
       ]"
       :answer="['rouge', 'vert', 'jaune']"
+      
     />
   </form>
 
   <div class="mb-4"></div>
 
-  <!-- <form>
+  <form>
     <QuestionRadio
       id="TAD1"
-      v-model="questionStates[3]"
+      v-model="questionStates[5]"
       text="Quelle théorie de l'apprentissage se concentre sur l'observation et l'imitation du comportement des autres ?"
       :options="[
         { value: 'a', text: 'La théorie du conditionnement classique' },
@@ -137,7 +138,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD2"
-      v-model="questionStates[4]"
+      v-model="questionStates[6]"
       text="Qui est le principal auteur associé à la théorie du conditionnement opérant ?"
       :options="[
         { value: 'a', text: 'Jean Piaget' },
@@ -154,7 +155,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD3"
-      v-model="questionStates[5]"
+      v-model="questionStates[7]"
       text="Quelle est la principale différence entre le conditionnement classique et le conditionnement opérant ?"
       :options="[
         {value: 'a', text: 'Le conditionnement classique implique des conséquences sur le comportement'},
@@ -171,7 +172,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD4"
-      v-model="questionStates[6]"
+      v-model="questionStates[8]"
       text="Dans le conditionnement classique, le Stimulus Conditionnel (SC) est :"
       :options="[
         { value: 'a', text: 'Un stimulus qui provoque une réponse inconditionnelle'},
@@ -188,7 +189,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD5"
-      v-model="questionStates[7]"
+      v-model="questionStates[9]"
       text="Qu'est-ce qui implique l'ajout d'un stimulus appétitif pour augmenter la probsbilité que le comportement se reproduise ?"
       :options="[
         { value: 'a', text: 'Renforcement négatif' },
@@ -205,7 +206,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD6"
-      v-model="questionStates[8]"
+      v-model="questionStates[10]"
       text="Quel est l'effet de l'effet d'espacement sur l'apprentissage ?"
       :options="[
         { value: 'a', text: 'Il diminue la rétention d\'information' },
@@ -222,7 +223,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD7"
-      v-model="questionStates[9]"
+      v-model="questionStates[11]"
       text="Selon Jean Piaget, quel est un des critères qui définit l'intelligence ?"
       :options="[
         { value: 'a', text: 'La capacité à mémoriser des informations' },
@@ -239,7 +240,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD9"
-      v-model="questionStates[11]"
+      v-model="questionStates[12]"
       text="Quelle est la différence majeure entre le conditionnement classique et le conditionnement opérant ?"
       :options="[
         { value: 'a', text: 'Le conditionnement classique implique des conséquences sur le comportement' },
@@ -256,7 +257,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD10"
-      v-model="questionStates[12]"
+      v-model="questionStates[13]"
       text="Dans le renforcement négatif, que se passe-t-il ?"
       :options="[
         { value: 'a', text: 'Un stimulus appétitif est ajouté' },
@@ -273,7 +274,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="TAD11"
-      v-model="questionStates[13]"
+      v-model="questionStates[14]"
       text="Selon Piaget, quelle est une des caractéristiques de l’intelligence humaine ?"
       :options="[
         { value: 'a', text: 'La capacité à mémoriser' },
@@ -290,7 +291,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionTextlibre
       id="TAD4"
-      v-model="questionStates[14]"
+      v-model="questionStates[15]"
       text="Expliquez les phases de l’encodage, de la consolidation et de la récupération."
       answer-detail="Encodage : Entrée des informations dans le cerveau.
 Consolidation : Renforcement des souvenirs dans la mémoire.
@@ -305,7 +306,7 @@ Récupération : Accès et utilisation des informations stockées."
   <form>
     <QuestionTextlibre
       id="TAD5"
-      v-model="questionStates[15]"
+      v-model="questionStates[16]"
       text="Donnez un exemple pratique illustrant le renforcement positif et son effet sur le comportement."
       answer-detail="Le renforcement positif est lorsqu'un comportement est suivi d'une récompense pour encourager sa répétition. Exemple : un professeur félicite un élève (Bravo !) lorsqu'il participe en classe, ce qui motive l'élève à participer davantage."
       placeholder="Votre réponse"
@@ -313,22 +314,9 @@ Récupération : Accès et utilisation des informations stockées."
     />
   </form>
 
-  <div class="mb-4"></div> -->
+  <div class="mb-4"></div>
 
-  <!-- <div class="form-check">
-    <input
-      id="checkboxTAD1"
-      v-model="questionStates[16]"
-      class="form-check-input"
-      type="checkbox"
-      value="Piaget"
-    />
-    <label class="form-check-label" for="checkboxPiaget">Piaget</label>
-  </div>
-  
-  <div class="mb-4"></div> -->
-
-
+ 
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->

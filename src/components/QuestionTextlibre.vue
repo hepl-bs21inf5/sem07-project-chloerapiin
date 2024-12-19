@@ -41,6 +41,14 @@ watch(userAnswer, (newValue) => {
   }
 });
 
+watch(
+  () => model.value,
+  (newValue) => {
+    if (newValue === QuestionState.Empty) {     //si la valeur entrée est égale à l'état vide
+      userAnswer.value = '';                    // Réinitialise le champ texte lorsque qu'on clique sur le bouton réinitialiser 
+    }
+  }
+);
 function submit(): void {
   if (props.siCorrectAnswer && props.answer) {
     model.value = userAnswer.value.trim().toLowerCase() === props.answer.trim().toLowerCase()
