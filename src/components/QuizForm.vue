@@ -6,9 +6,6 @@ import { computed, ref } from 'vue'
 import QuestionCheckbox from './QuestionCheckbox.vue'
 import QuestionTextlibre from './QuestionTextlibre.vue'
 
-// const cheval = ref<string | null>(null)
-// const pattes = ref<string | null>(null)
-// const capitale = ref<string | null>(null) //Création de mes différentes valeurs pour mes quiz
 const questionStates = ref<QuestionState[]>([])
 const score = computed<number>(
   () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
@@ -75,7 +72,7 @@ function reset(event: Event): void {
   <form>
     <QuestionTextlibre
       id="libre1"
-      v-model="questionStates[0]"
+      v-model="questionStates[2]"
       text="Expliquez l'effet d'espacement sur l'apprentissage."
       answer-detail="Un apprentissage est plus efficace si on oublie et qu'on réapprend. Des sujets apprennent une paire de mots on varie l'espacement entre les périodes d'études (Tous les 14 jours, 28 jours, 56 jours) en tout il y a 26 périodes.
 Le temps baisse la force de récupération, c'est une difficulté désirable. Le fait de réapprendre favorise la rétention à long-terme.
@@ -89,7 +86,7 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
   <form>
     <QuestionRadio
       id="capitale"
-      v-model="questionStates[2]"
+      v-model="questionStates[3]"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
         { value: 'Zurich', text: 'Zurich' },
@@ -98,6 +95,23 @@ Le temps baisse la force de récupération, c'est une difficulté désirable. Le
         { value: 'Geneve', text: 'Geneve' },
       ]"
       answer="Berne"
+    />
+  </form>
+
+  <div class="mb-4"></div> 
+
+  <form>
+    <QuestionCheckbox
+      id="apple-colors"
+      v-model="questionStates[4]"
+      text="Quelles sont les couleurs des pommes ? (Plusieurs réponses possibles)"
+      :options="[
+        { value: 'rouge', text: 'Rouge' },
+        { value: 'vert', text: 'Vert' },
+        { value: 'jaune', text: 'Jaune' },
+        { value: 'bleu', text: 'Bleu' }
+      ]"
+      :answer="['rouge', 'vert', 'jaune']"
     />
   </form>
 
@@ -322,7 +336,7 @@ Récupération : Accès et utilisation des informations stockées."
   <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">recommencer</button>-->
   <!--<button class="btn btn-secondary" type="button" @click="reset">Recommencer</button>-->
 
-  <button class="btn btn-primary" :class="{ disabled: !filled }" @click="reset">
+  <button class="btn btn-primary" @click="reset">
     Réinitialiser
   </button>
   <div>Réponses correctes : {{ questionStates }}</div>

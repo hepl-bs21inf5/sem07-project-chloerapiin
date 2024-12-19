@@ -13,29 +13,33 @@ const props = defineProps({
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
   },
+  answerDetail: { type: String, default: "" }, // Détail sur la réponse (facultatif)
 })
+
 
 const value = ref<string[]>([])
 
 watch(
   value,
   (newValues) => {
-    if (newValues.length === 0) {
-      model.value = QuestionState.Empty
-    } else if (model.value !== QuestionState.Submit) {
-      model.value = QuestionState.Fill
+    if (model.value !== QuestionState.Submit) {           // si l'utilisateur sélectionne une/des réponses 
+      model.value = QuestionState.Fill                    //l'état de la question est fill = remplie
+    }
+    else if (newValues.length === null) {                  //si aucune réponse n'est selectionné alors le tableau avec les réponses est vide
+      model.value = QuestionState.Empty                    //l'état de la question est empty = vide
     }
   },
   { immediate: true },
 )
 
 watch(model, (newModel) => {
-  if (newModel === QuestionState.Submit) {
-    const isCorrect = 
-      props.answer.length === value.value.length &&
-      props.answer.every((val) => value.value.includes(val))
-    model.value = isCorrect ? QuestionState.Correct : QuestionState.Wrong
-  } else if (newModel === QuestionState.Empty) {
+  if (newModel === QuestionState.Submit) {                                      //si l'utilisateur soumet la question 
+    const isCorrect =                                                           // vérification de si les réponses sont correcte 
+      props.answer.length === value.value.length &&                             // vérifie si le nombre de réponse soumises égale au nombre de réponses justes
+      props.answer.every((val) => value.value.includes(val))                    // Vérifie que chaque réponse juste là
+    model.value = isCorrect ? QuestionState.Correct : QuestionState.Wrong       //si les réponse sont justes alors on définit l'état correct
+                                                                                //si les réponses sont fausses alors on définit l'état incorrect
+  } else if (newModel === QuestionState.Empty) {                                //sinon si l'utilisateur ne rentre pas de réponse alors on mets l'état empty = vide              
     value.value = []
   }
 })
@@ -60,4 +64,22 @@ watch(model, (newModel) => {
       {{ option.text }}
     </label>
   </div>
+
+  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
+      <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+      <p v-else class="text-danger">
+        Faux ! Les réponses étaient : {{ props.answer.join(", ") }}
+      </p>
+      <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
+  </div>
+  
 </template>
+
+<style scoped>
+.text-danger {
+  color: red !important;
+}
+.text-success {
+  color: greenyellow !important;
+}
+</style>
