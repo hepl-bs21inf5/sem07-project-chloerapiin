@@ -26,7 +26,7 @@ fetch(
       v-for="(question, index) in questions"
       :id="index.toString()"
       :key="index"
-      v-model="answers[index]"
+      answer = ""
       :text="question.question"
       :options="[
         { value: question.correct_answer, text: question.correct_answer },
