@@ -8,7 +8,7 @@ const props = defineProps({
   placeholder: { type: String, default: 'Veuillez écrire votre réponse ici' },
   answer: { type: String, required: false }, // Facultatif pour les réponses libres
   answerDetail: { type: String, default: '' }, // Explication affichée après soumission
-  siCorrectAnswer: { type: String, default: false }, // Définit si une réponse correcte existe
+  siCorrectAnswer: { type: Boolean, default: false }, // Définit si une réponse correcte existe
 });
 
 //Etat de la question
