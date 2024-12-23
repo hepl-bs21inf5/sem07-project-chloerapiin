@@ -80,7 +80,7 @@ function reset(event: Event): void {
     />
   </form>
 
-  <!-- <form>
+  <form>
     <QuestionRadio
       id="capitale"
       v-model="questionStates[3]"
@@ -311,7 +311,7 @@ Récupération : Accès et utilisation des informations stockées."
     />
   </form>
 
-  <div class="mb-4"></div> -->
+  <div class="mb-4"></div>
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
