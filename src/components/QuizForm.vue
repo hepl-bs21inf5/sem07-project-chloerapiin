@@ -74,7 +74,7 @@ function reset(event: Event): void {
       id="libre1"
       v-model="questionStates[2]"
       text="Expliquez l'effet d'espacement sur l'apprentissage."
-      answer-detail="Le chat est un mammifère quadripède."
+      answer-detail="L'effet d'espacement montre que l'apprentissage est plus efficace quand les séances d'étude sont espacées dans le temps, plutôt que concentrées en une seule session. Cela améliore la rétention à long terme de l'information."
       placeholder="Votre réponse..."
       siCorrectAnswer="false"
     />
