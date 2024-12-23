@@ -29,10 +29,11 @@ const showFeedback = computed(() => {
 //donne le message de feedback grâce à answerdetail
 const feedbackMessage = computed(() => {
   if (model.value === QuestionState.Submit) {
-    return props.answerDetail; // Show feedback after submission
+    return props.answerDetail; 
   }
-  return ''; // Return an empty string if not submitted
+  return ''; 
 });
+
 
 watch(userAnswer, (newValue) => {
   if (!newValue.trim()) {
@@ -73,7 +74,7 @@ function reset(): void {
       :disabled="disabled"
     ></textarea>
   </div>
-  <p class="blockquote-footer">{{ props.answerDetail }}</p>
+  <p class="blockquote-footer" v-if="showFeedback">{{ feedbackMessage }}</p>
 </template>
 
 <style scoped>
