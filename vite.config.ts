@@ -5,7 +5,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/sem07-project-{pseudo}/",
+  base: "/sem07-project-chloerapiin/",
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
