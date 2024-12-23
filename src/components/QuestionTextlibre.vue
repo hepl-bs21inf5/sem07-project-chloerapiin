@@ -28,9 +28,11 @@ const showFeedback = computed(() => {
 
 //donne le message de feedback grâce à answerdetail
 const feedbackMessage = computed(() => {
-  if (model.value === QuestionState.Fill) {
-    return props.answerDetail; // Affiche answerDetail
-}});
+  if (model.value === QuestionState.Submit) {
+    return props.answerDetail; // Show feedback after submission
+  }
+  return ''; // Return an empty string if not submitted
+});
 
 watch(userAnswer, (newValue) => {
   if (!newValue.trim()) {
