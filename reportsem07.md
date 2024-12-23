@@ -4,7 +4,10 @@ Seminaire 06 - Outils
 
 # Journal de Bord - Projet de Chloé
 
+## Lien du site: https://hepl-bs21inf5.github.io/sem07-project-chloerapiin/
+
 ## 7 novembre 2024 au 26 décembre 2024
+
 
 # 1. Temps éstimé
 

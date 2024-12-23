@@ -11,27 +11,26 @@ const props = defineProps({
   siCorrectAnswer: { type: String, default: false }, // Définit si une réponse correcte existe
 });
 
+//Etat de la question
 const model = defineModel<QuestionState>(QuestionState.Empty);
 const userAnswer = ref<string>('');
 
+
 const disabled = computed(() => {
-  return model.value === QuestionState.Submit ||
-         model.value === QuestionState.Correct ||
-         model.value === QuestionState.Wrong;
+  return model.value === QuestionState.Submit;
 });
 
+
+//si la question est soumise alors affiche le commentaire
 const showFeedback = computed(() => {
-  return model.value === QuestionState.Correct || model.value === QuestionState.Wrong;
+  return model.value === QuestionState.Submit;
 });
 
+//donne le message de feedback grâce à answerdetail
 const feedbackMessage = computed(() => {
-  if (model.value === QuestionState.Correct) {
-    return 'Juste !';
-  } else if (model.value === QuestionState.Wrong) {
-    return `Faux ! La réponse était : ${props.answer}`;
-  }
-  return '';
-});
+  if (model.value === QuestionState.Fill) {
+    return props.answerDetail; // Affiche answerDetail
+}});
 
 watch(userAnswer, (newValue) => {
   if (!newValue.trim()) {
@@ -49,14 +48,10 @@ watch(
     }
   }
 );
+
+//fonction pour soumettre la question
 function submit(): void {
-  if (props.siCorrectAnswer && props.answer) {
-    model.value = userAnswer.value.trim().toLowerCase() === props.answer.trim().toLowerCase()
-      ? QuestionState.Correct
-      : QuestionState.Wrong;
-  } else {
-    model.value = QuestionState.Fill;
-  }
+  model.value = QuestionState.Submit;
 }
 
 function reset(): void {
@@ -66,19 +61,17 @@ function reset(): void {
 
 </script>
 <template>
-    <div class="question-text-libre">
-      <label :for="id" class="form-label">{{ text }}</label>
-      <textarea
-        :id="id"
-        v-model="userAnswer"
-        class="form-control"
-        :placeholder="placeholder"
-        :disabled="disabled"
-      ></textarea>
-      <p v-if="showFeedback" class="feedback">
-        {{ answerDetail }}
-      </p>
-    </div>
+  <div class="question-text-libre">
+    <label :for="id" class="form-label">{{ text }}</label>
+    <textarea
+      :id="id"
+      v-model="userAnswer"
+      class="form-control"
+      :placeholder="placeholder"
+      :disabled="disabled"
+    ></textarea>
+  </div>
+  <p class="blockquote-footer">{{ props.answerDetail }}</p>
 </template>
 
 <style scoped>

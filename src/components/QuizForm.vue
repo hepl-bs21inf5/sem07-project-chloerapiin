@@ -56,7 +56,7 @@ function reset(event: Event): void {
       id="pattes"
       v-model="questionStates[1]"
       text="Combien de pattes a un chat ?"
-      answer-detail="Le chat est un mammifère quadrupède."
+      answer-detail="Le chat est un mammifère quadripède."
       :options="[
         { value: '2', text: '2' },
         { value: '3', text: '3' },
@@ -74,16 +74,13 @@ function reset(event: Event): void {
       id="libre1"
       v-model="questionStates[2]"
       text="Expliquez l'effet d'espacement sur l'apprentissage."
-      answer-detail="Un apprentissage est plus efficace si on oublie et qu'on réapprend. Des sujets apprennent une paire de mots on varie l'espacement entre les périodes d'études (Tous les 14 jours, 28 jours, 56 jours) en tout il y a 26 périodes.
-Le temps baisse la force de récupération, c'est une difficulté désirable. Le fait de réapprendre favorise la rétention à long-terme.
-"
+      answer-detail="Le chat est un mammifère quadripède."
       placeholder="Votre réponse..."
       siCorrectAnswer="false"
-
     />
   </form>
 
-  <form>
+  <!-- <form>
     <QuestionRadio
       id="capitale"
       v-model="questionStates[3]"
@@ -314,9 +311,7 @@ Récupération : Accès et utilisation des informations stockées."
     />
   </form>
 
-  <div class="mb-4"></div>
-
- 
+  <div class="mb-4"></div> -->
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
@@ -324,9 +319,7 @@ Récupération : Accès et utilisation des informations stockées."
   <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="reset">recommencer</button>-->
   <!--<button class="btn btn-secondary" type="button" @click="reset">Recommencer</button>-->
 
-  <button class="btn btn-primary" @click="reset">
-    Réinitialiser
-  </button>
+  <button class="btn btn-primary" @click="reset">Réinitialiser</button>
   <div>Réponses correctes : {{ questionStates }}</div>
   <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
   <div>Debug états : {{ questionStates }}</div>
