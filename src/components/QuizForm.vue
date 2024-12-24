@@ -79,7 +79,7 @@ function reset(event: Event): void {
     />
   </form>
 
-  <!-- <form>
+  <form>
     <QuestionRadio
       id="capitale"
       v-model="questionStates[3]"
@@ -293,7 +293,7 @@ function reset(event: Event): void {
 Consolidation : Renforcement des souvenirs dans la mémoire.
 Récupération : Accès et utilisation des informations stockées."
       placeholder="Votre réponse"
-      siCorrectAnswer="false"
+      :siCorrectAnswer="false"
     />
   </form>
 
@@ -306,11 +306,11 @@ Récupération : Accès et utilisation des informations stockées."
       text="Donnez un exemple pratique illustrant le renforcement positif et son effet sur le comportement."
       answer-detail="Le renforcement positif est lorsqu'un comportement est suivi d'une récompense pour encourager sa répétition. Exemple : un professeur félicite un élève (Bravo !) lorsqu'il participe en classe, ce qui motive l'élève à participer davantage."
       placeholder="Votre réponse"
-      siCorrectAnswer="false"
+      :siCorrectAnswer="false"
     />
   </form>
 
-  <div class="mb-4"></div> -->
+  <div class="mb-4"></div>
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
