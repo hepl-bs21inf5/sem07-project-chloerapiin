@@ -44,7 +44,6 @@ function reset(event: Event): void {
       v-model="questionStates[0]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       answer="blanc"
-      answer-detail="Relis la question"
       placeholder="Veuillez saisir une couleur"
     />
   </form>
