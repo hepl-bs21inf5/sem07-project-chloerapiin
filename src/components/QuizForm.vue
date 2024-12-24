@@ -76,11 +76,11 @@ function reset(event: Event): void {
       text="Expliquez l'effet d'espacement sur l'apprentissage."
       answer-detail="L'effet d'espacement montre que l'apprentissage est plus efficace quand les séances d'étude sont espacées dans le temps, plutôt que concentrées en une seule session. Cela améliore la rétention à long terme de l'information."
       placeholder="Votre réponse..."
-      siCorrectAnswer="false"
+      :siCorrectAnswer="false"
     />
   </form>
 
-  <form>
+  <!-- <form>
     <QuestionRadio
       id="capitale"
       v-model="questionStates[3]"
@@ -311,7 +311,7 @@ Récupération : Accès et utilisation des informations stockées."
     />
   </form>
 
-  <div class="mb-4"></div>
+  <div class="mb-4"></div> -->
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
