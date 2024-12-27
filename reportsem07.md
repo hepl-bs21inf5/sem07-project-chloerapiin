@@ -8,7 +8,6 @@ Seminaire 06 - Outils
 
 ## 7 novembre 2024 au 26 décembre 2024
 
-
 # 1. Temps éstimé
 
 | **Tâches**      | **Temps estimé** | **Temps passé** | **Commentaire**                                                                                           |
@@ -35,8 +34,8 @@ Seminaire 06 - Outils
 |                 |                  |                 | et on lui donne juste une réponse générale dans le answerdetails sans mettre de juste ou de faux          |
 | style           | 20min            | 5min            | enfaite il faut juste copier et ensuite ça nous permet de mettre des couleurs pour les répnses si c'est   |
 |                 |                  |                 | juste ou si c'est faux                                                                                    |
-| déploiement     | 30min            |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
+| déploiement     | 30min            | 2h              | J'ai eu un problème ou une deuxiè me branche c'est créer j'ai du alors reprendre un ancien commit et      |
+|                 |                  |                 | recommencer le déploiement pour que cette fois cela marche et que je reste sur la branche main            |
 |                 |                  |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
 |                 |                  |                 |                                                                                                           |
@@ -44,11 +43,11 @@ Seminaire 06 - Outils
 
 # 2. Difficultés rencontrées et solutions trouvées
 
-| **Problème**        | **Description**                                                                    | **Solution**      |
-| ------------------- | ---------------------------------------------------------------------------------- | ----------------- |
-| Problème 1: 1.12.24 | Afficher le score uniquement si toutes les questions ont été soumises et corrigées | je n'y arrive pas |
-|                     |                                                                                    |                   |
-|                     |                                                                                    |                   |
+| **Problème**        | **Description**                                                                    | **Solution**     |
+| ------------------- | ---------------------------------------------------------------------------------- | ---------------- |
+| Problème 1: 1.12.24 | Afficher le score uniquement si toutes les questions ont été soumises et corrigées | problème de type |
+|                     |                                                                                    |                  |
+|                     |                                                                                    |                  |
 
 # 3. Suite du projet
 
@@ -70,19 +69,19 @@ command + shift + V pour prévisualiser le rapport
 
 ## Le rôle des fichiers suivants :
 
-- main.ts:
+- **main.ts**: dans ce document on import des fichiers CSS pour le style de l'application, comme les Bootstrap. Il y a aussi la fonction createApp qui crée notre application. C'est aussi ici qu'on gère pour voir et accéder aux différentes pages, ce qui permet de naviguer dans mon app
 
-- main.css : code css pour modifer tous ce qui est des couleurs/police de notre page
+- **main.css** : dans ce fichier on définit l'apparence des boutons avec la classe".btn-primary" dans notre app. 
 
-- App.vue: icône navabar
+- **App.vue**: le fichier est très important, car il contient la barre de navigation de notre app, cela permet de se déplacer dans les différentes pages, accueil, trivia, contact, etc. Grace a "RouterLink", on peut gérer la navigation vers les différentes pages et "RouterView", permet d'afficher le contenu des pages.
 
-- router/index.ts:
+- **router/index.ts**: dans ce fichier on configure les chemins d'accès aux différentes pages de notre application en définissant les routes et en les associant aux chemins pour chaque composant.
 
-- AboutView.vue:
+- **AboutView.vue**:le fichier est un composant qui contient la page à propos de notre app. Cela permet d'afficher tous les infos que contient notre page about.
 
-- HomeView.vue:
+- **HomeView.vue**: dans ce fichier il s'agit aussi d'un composant qui est notre page d'accueil de notre app et sur laquel il y a notre quiz.
 
-- QuizForm.vue: code html de base
+- **QuizForm.vue**: le fichier est également un composant qui gère notre quiz, avec les différents types de questions, checkbox, texte, radio, etc. Il calcule aussi le score, gère les états des questions(emptyfill, submit,...), il y les boutons, un pour soumettre le quiz et un pour réinitialiser son quiz
 
 ## Dans le fichier QuizForm.vue :
 
@@ -92,103 +91,108 @@ Ce sont tous les deux des "variables", sauf que computed est mis à jour automat
 
 - ref est une variable qu'on met à jour nous-mêmes, alors que computed se met à jour automatiquement en fonction d'autres "variables".
 
-## Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?
+### Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?
 
 il verifie chaque réponse entrée par l'utilisateur et calcul le nombre de réponse juste et renvoie une réponse dépendant du nombre de réponses justes
 
-## Qu'est-ce qu'un v-model ?
+### Qu'est-ce qu'un v-model ?
 
 Ca permet de stocker une variable qui peut changer, comme dans mon quiz ou ça peut être cheval/pattes/capitale
 
-## À quoi sert le :class="{ disabled: !filled }" ?
+### À quoi sert le :class="{ disabled: !filled }" ?
 
 :disabled permet de cibler un élément désactivé
 
 - permet d'éviter d'activer le bouton tant que pas toutes les cases ont été cochées
 
-# Quelle est la différence entre un prop et un modèle (v-model)?
+## Quelle est la différence entre un prop et un modèle (v-model)?
 
 - Un prop : c'est toute les données d'un composant (exemple : texte, les options, la réponse correcte, etc.)
 - un v-model : c'est ce qui lie les valeurs de l'utilisateur et les données du composant de base
 
 Je ne suis pas trop sûre de mes réponses si je mélange les données du composant avce les réponses de l'utilisateur ... ?
 
-# Comment rendre la propriété placeholder optionnelle ?
+## Comment rendre la propriété placeholder optionnelle ?
 
 required: Définit si l'accessoire est nécessaire.
 
 En mettant required: false, la propriété devient optionnelle. Même avant l'exécution, l'erreur est déjà signalée, ce qui empêche Vue de générer une erreur si la prop n'est pas donnée lors de l'exécution.
 
-# Le composant QuestionRadio doit recevoir les propriétés suivantes :
+## Le composant QuestionRadio doit recevoir les propriétés suivantes :
 
-+ v-model : la valeur de la réponse (bi-directionnel, car on veut pouvoir modifier la réponse depuis le composant parent lorsqu'on clique sur le bouton "Réinitialiser" et récupérer la réponse depuis le composant parent pour calculer le score).
+- v-model : la valeur de la réponse (bi-directionnel, car on veut pouvoir modifier la réponse depuis le composant parent lorsqu'on clique sur le bouton "Réinitialiser" et récupérer la réponse depuis le composant parent pour calculer le score).
 
-+ id : un identifiant unique pour le groupe de boutons radio.
+- id : un identifiant unique pour le groupe de boutons radio.
 
-+ text : le texte de la question.
+- text : le texte de la question.
 
-+ options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.
+- options : un tableau d'objets pour les options de réponse. Chaque objet doit avoir une propriété value pour la valeur de la réponse et une propriété text pour le texte affiché de l'option.
 
-# À quoi sert l'option immediate: true dans le watch ?
+## À quoi sert l'option immediate: true dans le watch ?
 
 Permet de forcer l'exécution immédiate de l'affichage de la réponse, car tant que l'utilisateur ne sélectionne pas de réponse on ne voit pas true ou false pour chaque question
 
-# Que se passe-t-il si on l'enlève ou si on met immediate: false ?
+### Que se passe-t-il si on l'enlève ou si on met immediate: false ?
 
 pas immédiat il attend que l'utilisateur choisisse des réponses avant d'afficher les réponses (true ou false)
 
-# Porposer une autre manière de calculer le score et comparer les deux méthodes
+## Porposer une autre manière de calculer le score et comparer les deux méthodes
 
-1er méthode :
-const score = computed<number>(  
- () => correctAnswers.value.filter(value => value).length,
-)
-#correctAnswers.value est un tableau qui contient les réponses true or false
-#filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
-#length : calcul le nombre de réponses correctes
-
-- +cette méthode est plus courte et concise
-
-* -elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
-
-2e méthode :
-function submit(event: Event): void {
-event.preventDefault()
-let score: number = 0
-if (cheval.value === 'blanc') {
-score += 1
-}
-if (chat.value === '4') {
-score += 1
-}
-alert(`Votre score est de ${score} sur 2`)
-}
-#dans cette méthode, on calcul le score en fonction des réponses données pour chaque question et si elles sont juste alors on ajoute 1 à notre score
-
-- +:plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
-
-* -:plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
-
-# Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
+**1er méthode** :
 
 ```TS
-    "model.value" = ""
-    "value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
+    const score = computed<number>(  
+    () => correctAnswers.value.filter(value => value).length,
+    )
+    /*correctAnswers.value est un tableau qui contient les réponses true or false
+    filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
+    length : calcul le nombre de réponses correctes*/
+```
+- **+** cette méthode est plus courte et concise
+
+* **-** elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
+
+**2e méthode** :
+
+```TS
+function submit(event: Event): void {
+    event.preventDefault()
+    let score: number = 0
+    if (cheval.value === 'blanc') {
+        score += 1
+    }
+    if (chat.value === '4') {
+        score += 1
+    }
+    alert(`Votre score est de ${score} sur 2`)
+}
+/*dans cette méthode, on calcul le score en fonction des réponses données pour chaque question et si elles sont juste alors on ajoute 1 à notre score*/
+```
+
+- **+** :plus compréhensible dans son fonctionnement, se fait quand on clique sur terminer
+
+* **-** :plus longue, on doit à chaque fois faire appel à la fonction submit (terminer) pour calculer le score
+
+## Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
+
+```TS
+"model.value" = ""
+"value.value" === "props.answer ? QuestionState.Correct : QuestionState.Wrong";
 
 ...
 
-    if (newModel === QuestionState.Submit) {
+if (newModel === QuestionState.Submit) {
 
-        if (value.value === props.answer) {       | si la valeur entrée est correct(= à props.answer)
-            model.value = QuestionState.Correct;  | alors on assigne questionState.Correct à model value
-
-        } else {                                  | Si la réponse est incorrecte
-            model.value = QuestionState.Wrong;    | alors on assigne questionState.Wrong à model value
-        }
+    if (value.value === props.answer) { /*si la valeur    entrée est correct(= à props.answer)*/
+    model.value = QuestionState.Correct;/*alors on assigne questionState.Correct à model value*/
+    } 
+    else { /*Si la réponse est incorrecte*/
+        model.value = QuestionState.Wrong; /*alors on assigne questionState.Wrong à model value*/
     }
+}
 ```
 
-## Aide
+### Aide
 
     if: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
     --> on vérifier alors si value.value(la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
@@ -208,7 +212,7 @@ alert(`Votre score est de ${score} sur 2`)
     },
     );
 
-# Comment pourrait-on réécrire autrement la logique du watch sur value ?
+## Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
 ```TS
     watch(
@@ -245,7 +249,7 @@ Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
 
 - on fait ce changement
 
-## question du mardi 17 décembre du prof : comment êtes-vous arrivée à cette solution ?
+## Question du mardi 17 décembre du prof : comment êtes-vous arrivée à cette solution ?
 
 J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaires :
 
@@ -277,3 +281,12 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
     }
     })
 ```
+
+
+# Expliquer votre démarche pour les améliorations que vous avez choisies :
+
+### Pourquoi avez-vous choisi ces améliorations ?
+### Comment les avez-vous implémentées ?
+### Quels problèmes avez-vous rencontrés ?
+### Quelles améliorations pourriez-vous encore apporter ?
+### Vous devoir pouvoir expliquer votre code afin de valider une amélioration.
