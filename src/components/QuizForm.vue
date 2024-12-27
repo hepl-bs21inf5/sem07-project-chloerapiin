@@ -39,295 +39,301 @@ function reset(event: Event): void {
 </script>
 
 <template>
-  <form>
-    <QuestionText
-      id="cheval"
-      v-model="questionStates[0]"
-      text="De quelle couleur est le cheval blanc de Napoléon ?"
-      answer="blanc"
-      placeholder="Veuillez saisir une couleur"
-    />
-  </form>
 
-  <div class="mb-4"></div>
+<div class="mb-4"></div>
 
-  <form>
-    <QuestionRadio
-      id="pattes"
-      v-model="questionStates[1]"
-      text="Combien de pattes a un chat ?"
-      answer-detail="Le chat est un mammifère quadripède."
-      :options="[
-        { value: '2', text: '2' },
-        { value: '3', text: '3' },
-        { value: '8', text: '8' },
-        { value: '4', text: '4' },
-      ]"
-      answer="4"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionTextlibre
-      id="libre1"
-      v-model="questionStates[2]"
-      text="Expliquez l'effet d'espacement sur l'apprentissage."
-      answer-detail="L'effet d'espacement montre que l'apprentissage est plus efficace quand les séances d'étude sont espacées dans le temps, plutôt que concentrées en une seule session. Cela améliore la rétention à long terme de l'information."
-      placeholder="Votre réponse..."
-      :siCorrectAnswer="false"
-    />
-  </form>
-
-  <form>
-    <QuestionRadio
-      id="capitale"
-      v-model="questionStates[3]"
-      text="Quelle est la capitale de la Suisse ?"
-      :options="[
-        { value: 'Zurich', text: 'Zurich' },
-        { value: 'Lausanne', text: 'Lausanne' },
-        { value: 'Berne', text: 'Berne' },
-        { value: 'Geneve', text: 'Geneve' },
-      ]"
-      answer="Berne"
-    />
-  </form>
-
-  <div class="mb-4"></div> 
-
-  <form>
-    <QuestionCheckbox
-      id="apple-colors"
-      v-model="questionStates[4]"
-      text="Quelles sont les couleurs des pommes ? (Plusieurs réponses possibles)"
-      :options="[
-        { value: 'rouge', text: 'Rouge' },
-        { value: 'vert', text: 'Vert' },
-        { value: 'jaune', text: 'Jaune' },
-        { value: 'bleu', text: 'Bleu' }
-      ]"
-      :answer="['rouge', 'vert', 'jaune']"
-      
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD1"
-      v-model="questionStates[5]"
-      text="Quelle théorie de l'apprentissage se concentre sur l'observation et l'imitation du comportement des autres ?"
-      :options="[
-        { value: 'a', text: 'La théorie du conditionnement classique' },
-        { value: 'b', text: 'La théorie de l\'apprentissage social' },
-        { value: 'c', text: 'La théorie de l\'apprentissage cognitif' },
-        { value: 'd', text: ' La théorie de l\'apprentissage par renforcement' },
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD2"
-      v-model="questionStates[6]"
-      text="Qui est le principal auteur associé à la théorie du conditionnement opérant ?"
-      :options="[
-        { value: 'a', text: 'Jean Piaget' },
-        { value: 'b', text: 'B.F. Skinner' },
-        { value: 'c', text: 'Lev Vygotsky' },
-        { value: 'd', text: 'Albert Bandura' },
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD3"
-      v-model="questionStates[7]"
-      text="Quelle est la principale différence entre le conditionnement classique et le conditionnement opérant ?"
-      :options="[
-        {value: 'a', text: 'Le conditionnement classique implique des conséquences sur le comportement'},
-        {value: 'b', text: 'Le conditionnement opérant n\'implique pas de conséquences sur le comportement'},
-        {value: 'c', text: 'Le conditionnement classique n\'implique pas de conséquences sur le comportement'},
-        { value: 'd', text: 'Les deux types de conditionnement sont identiques' },
-      ]"
-      answer="c"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD4"
-      v-model="questionStates[8]"
-      text="Dans le conditionnement classique, le Stimulus Conditionnel (SC) est :"
-      :options="[
-        { value: 'a', text: 'Un stimulus qui provoque une réponse inconditionnelle'},
-        {value: 'b',text: 'Un stimulus qui provoque une réponse conditionnelle après conditionnement'},
-        { value: 'c', text: 'Un stimulus qui n\'a aucun effet sur le comportement'},          
-        { value: 'd', text: 'Un stimulus qui est toujours aversif'},
-       ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD5"
-      v-model="questionStates[9]"
-      text="Qu'est-ce qui implique l'ajout d'un stimulus appétitif pour augmenter la probsbilité que le comportement se reproduise ?"
-      :options="[
-        { value: 'a', text: 'Renforcement négatif' },
-        { value: 'b', text: 'Punition positive' },
-        { value: 'c', text: 'Renforcement positif' },
-        { value: 'd', text: 'Punition négative' },
-      ]"
-      answer="c"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD6"
-      v-model="questionStates[10]"
-      text="Quel est l'effet de l'effet d'espacement sur l'apprentissage ?"
-      :options="[
-        { value: 'a', text: 'Il diminue la rétention d\'information' },
-        { value: 'b', text: 'Il augmente la rétention d\'information' },
-        { value: 'c', text: 'Il n\'a aucun effet sur l\'apprentissage.' },
-        { value: 'd', text: 'Il rend l\'apprentissage plus difficile.' },
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD7"
-      v-model="questionStates[11]"
-      text="Selon Jean Piaget, quel est un des critères qui définit l'intelligence ?"
-      :options="[
-        { value: 'a', text: 'La capacité à mémoriser des informations' },
-        { value: 'b', text: 'La capacité à s\'adapter à de nouvelles situations' },
-        { value: 'c', text: 'La capacité à résoudre des problèmes mathématiques' },
-        { value: 'd', text: 'La capacité à communiquer efficacement.' },
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-    
-  <form>
-    <QuestionRadio
-      id="TAD9"
-      v-model="questionStates[12]"
-      text="Quelle est la différence majeure entre le conditionnement classique et le conditionnement opérant ?"
-      :options="[
-        { value: 'a', text: 'Le conditionnement classique implique des conséquences sur le comportement' },
-        { value: 'b', text: 'Le conditionnement opérant modifie un comportement instinctif' },
-        { value: 'c', text: 'Le conditionnement classique ne modifie pas les comportements instinctifs' },
-        { value: 'd', text: 'Les deux utilisent uniquement des stimuli neutres' }
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD10"
-      v-model="questionStates[13]"
-      text="Dans le renforcement négatif, que se passe-t-il ?"
-      :options="[
-        { value: 'a', text: 'Un stimulus appétitif est ajouté' },
-        { value: 'b', text: 'Un stimulus aversif est retiré' },
-        { value: 'c', text: 'Un comportement est puni' },
-        { value: 'd', text: 'Un comportement est ignoré' }
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionRadio
-      id="TAD11"
-      v-model="questionStates[14]"
-      text="Selon Piaget, quelle est une des caractéristiques de l’intelligence humaine ?"
-      :options="[
-        { value: 'a', text: 'La capacité à mémoriser' },
-        { value: 'b', text: 'L’introduction de continuité dans l’activité mentale' },
-        { value: 'c', text: 'La capacité à analyser des objets concrets uniquement' },
-        { value: 'd', text: 'L’acquisition automatique des langages' }
-      ]"
-      answer="b"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionTextlibre
-      id="TAD4"
-      v-model="questionStates[15]"
-      text="Expliquez les phases de l’encodage, de la consolidation et de la récupération."
-      answer-detail="Encodage : Entrée des informations dans le cerveau.
-Consolidation : Renforcement des souvenirs dans la mémoire.
-Récupération : Accès et utilisation des informations stockées."
-      placeholder="Votre réponse"
-      :siCorrectAnswer="false"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-    <QuestionTextlibre
-      id="TAD5"
-      v-model="questionStates[16]"
-      text="Donnez un exemple pratique illustrant le renforcement positif et son effet sur le comportement."
-      answer-detail="Le renforcement positif est lorsqu'un comportement est suivi d'une récompense pour encourager sa répétition. Exemple : un professeur félicite un élève (Bravo !) lorsqu'il participe en classe, ce qui motive l'élève à participer davantage."
-      placeholder="Votre réponse"
-      :siCorrectAnswer="false"
-    />
-  </form>
-
-  <div class="mb-4"></div>
-
-  <form>
-  <QuestionSelect
-    id="TAD11"
-    v-model="questionStates[17]"
-    text="Selon Piaget, quelle est une des caractéristiques de l’intelligence humaine ?"
-    :options="[
-      { value: 'a', text: 'La capacité à mémoriser' },
-      { value: 'b', text: 'L’introduction de continuité dans l’activité mentale' },
-      { value: 'c', text: 'La capacité à analyser des objets concrets uniquement' },
-      { value: 'd', text: 'L’acquisition automatique des langages' }
-    ]"
-    answer="b"
-    answerDetail="L’introduction de continuité dans l’activité mentale est une caractéristique clé de l’intelligence humaine selon Piaget."
+<form>
+  <QuestionTextlibre
+    id="TADQ1"
+    v-model="questionStates[0]"
+    text="Quels sont les quatre stades du développement selon Piaget ?"$
+    answer-detail="sensorimoteur, préopératoire, concret et formel."
+    placeholder="Votre réponse"
+    :siCorrectAnswer="false" 
   />
 </form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionRadio
+    id="TADQ2"
+    v-model="questionStates[1]"
+    text="Quel est le rôle principal de la Zone Proximale de Développement (ZPD) selon Vygotsky ?"
+    :options="[
+      { value: 'a', text: 'Favoriser l\'apprentissage autonome' },
+      { value: 'b', text: 'Encourager l\'imitation' },
+      { value: 'c', text: 'Permettre à un enfant d\'apprendre avec l\'aide d\'autrui' },
+      { value: 'd', text: 'Augmenter la répétition des tâches' }
+    ]"
+    answer="c"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionCheckbox
+    id="TADQ3"
+    v-model="questionStates[2]"
+    text="Quels éléments font partie des stratégies d'apprentissage actif ? (Choisissez tout ce qui s'applique)"
+    :options="[
+      { value: 'a', text: 'Observation' },
+      { value: 'b', text: 'Interaction sociale' },
+      { value: 'c', text: 'Passivité' },
+      { value: 'd', text: 'Jeux éducatifs' }
+    ]"
+    :answer="['Observation', 'Interaction sociale', 'Jeux éducatifs']"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionTextlibre
+    id="TADQ4"
+    v-model="questionStates[3]"
+    text="Expliquez brièvement le concept de renforcement positif."
+    answerDetail="Le renforcement positif consiste à ajouter un stimulus agréable après un comportement pour augmenter la probabilité qu’il se reproduise."
+    placeholder="Votre réponse"
+    :siCorrectAnswer="false"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionRadio
+    id="TADQ5"
+    v-model="questionStates[4]"
+    text="Quel est un exemple de conditionnement opérant ?"
+    :options="[
+      { value: 'a', text: 'Un chien salive en entendant une cloche.' },
+      { value: 'b', text: 'Un enfant reçoit une étoile dorée après avoir fait ses devoirs.' },
+      { value: 'c', text: 'Un étudiant mémorise une liste de vocabulaire.' },
+      { value: 'd', text: 'Un bébé sourit en voyant sa mère.' }
+    ]"
+    answer="b"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionSelect
+    id="TADQ6"
+    v-model="questionStates[5]"
+    text="Dans le conditionnement classique, quel type de stimulus provoque une réponse après conditionnement ?"
+    :options="[
+      { value: 'a', text: 'Stimulus neutre' },
+      { value: 'b', text: 'Stimulus inconditionnel' },
+      { value: 'c', text: 'Stimulus conditionné' },
+      { value: 'd', text: 'Stimulus aversif' }
+    ]"
+    answer="c"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionCheckbox
+    id="TADQ7"
+    v-model="questionStates[6]"
+    text="Quelles sont les implications principales du modèle de Vygotsky pour l'éducation ?"
+    :options="[
+      { value: 'a', text: 'L\'importance de l\'enseignement direct' },
+      { value: 'b', text: 'L\'utilisation d\'outils culturels' },
+      { value: 'c', text: 'Le rôle des pairs dans l\'apprentissage' },
+      { value: 'd', text: 'La mémorisation répétée' }
+    ]"
+    :answer="['L\'utilisation d\'outils culturels', 'Le rôle des pairs dans l\'apprentissage']"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionRadio
+    id="TADQ8"
+    v-model="questionStates[7]"
+    text="Qui a développé la théorie de l'apprentissage par observation ?"
+    :options="[ 
+      { value: 'a', text: 'Lev Vygotsky' },
+      { value: 'b', text: 'Albert Bandura' },
+      { value: 'c', text: 'Jean Piaget' },
+      { value: 'd', text: 'B.F. Skinner' }
+    ]"
+    answer="b"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionCheckbox
+    id="TADQ9"
+    v-model="questionStates[8]"
+    text="Quels sont des exemples de renforcements négatifs ? (Choisissez tout ce qui s'applique)"
+    :options="[ 
+      { value: 'a', text: 'Si tu finis tes devoirs tu n\'a pas besoin de ranger ta chambre.' },
+      { value: 'b', text: 'Recevoir une récompense pour une bonne action.' },
+      { value: 'c', text: 'Supprimer des devoirs si un élève travaille bien.' },
+      { value: 'd', text: 'Recevoir une punition pour une mauvaise action.' }
+    ]"
+    :answer="['Si tu finis tes devoirs tu n\'a pas besoin de ranger ta chambre.', 'Supprimer des devoirs si un élève travaille bien.']"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionTextlibre
+    id="TAD10"
+    v-model="questionStates[9]"
+    text="Expliquez les phases de l’encodage, de la consolidation et de la récupération."
+    answer-detail="Encodage : Entrée des informations dans le cerveau.
+Consolidation : Renforcement des souvenirs dans la mémoire.
+Récupération : Accès et utilisation des informations stockées."
+    placeholder="Votre réponse"
+    :siCorrectAnswer="false"
+  />
+</form>
+
+  <div class="mb-4"></div>
+
+<form>
+  <QuestionTextlibre
+    id="TADQ11"
+    v-model="questionStates[10]"
+    text="Expliquez le rôle de l'accommodation dans le développement cognitif selon Piaget."
+    answer-detail="L'accommodation est le processus par lequel une personne modifie ses schémas existants pour s'adapter à de nouvelles informations."
+    placeholder="Votre réponse"
+    :siCorrectAnswer="false"
+  />
+</form>
+  
+<div class="mb-4"></div>
+
+<form>
+  <QuestionText
+    id="TADQ12"
+    v-model="questionStates[11]"
+    text="Comment appelle-t-on un stimulus qui déclenche une réponse sans apprentissage préalable ?"
+    :answer="['stimulus inconditionnel', 'si']"
+    placeholder="Veuillez saisir votre réponse"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionText
+    id="TADQ13"
+    v-model="questionStates[12]"
+    text="À quel âge débute le stade des opérations formelles selon Piaget ?"
+    answer="['11', 'onze']"
+    placeholder="Veuillez saisir un âge"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionCheckbox
+    id="TADQ14"
+    v-model="questionStates[13]"
+    text="Quelles sont des stratégies d’apprentissage actif ? (Choisissez tout ce qui s’applique)"
+    :options="[ 
+      { value: 'a', text: 'Prise de notes' },
+      { value: 'b', text: 'Observation' },
+      { value: 'c', text: 'Passivité devant une vidéo éducative' },
+      { value: 'd', text: 'Résolution de problèmes' }
+    ]"
+    :answer="['Prise de notes', 'Observation', 'Résolution de problèmes']"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionTextlibre
+    id="TADQ15"
+    v-model="questionStates[14]"
+    text="Décrivez le concept d’échafaudage dans l’apprentissage selon Vygotsky."
+    answer-detail="L’échafaudage est une assistance temporaire apportée à un apprenant pour l’aider à maîtriser une tâche, qui est ensuite retirée au fur et à mesure de son autonomie."
+    placeholder="Votre réponse"
+    :siCorrectAnswer="false"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionRadio
+    id="TADQ16"
+    v-model="questionStates[15]"
+    text="Dans quel type d’apprentissage un stimulus neutre devient associé à une réponse ?"
+    :options="[ 
+      { value: 'a', text: 'Conditionnement opérant' },
+      { value: 'b', text: 'Conditionnement classique' },
+      { value: 'c', text: 'Apprentissage social' },
+      { value: 'd', text: 'Théorie cognitive' }
+    ]"
+    answer="b"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionCheckbox
+    id="TADQ17"
+    v-model="questionStates[16]"
+    text="Quels sont des exemples de renforcements positifs ? (Choisissez tout ce qui s’applique)"
+    :options="[ 
+      { value: 'a', text: 'Donner un bonbon après une bonne action.' },
+      { value: 'b', text: 'Supprimer une tâche désagréable après un bon comportement.' },
+      { value: 'c', text: 'Féliciter un élève après une participation en classe.' },
+      { value: 'd', text: 'Recevoir une punition pour une mauvaise action.' }
+    ]"
+    :answer="['a', 'c']"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionText
+    id="TADQ18"
+    v-model="questionStates[17]"
+    text="Quel concept Piaget utilise-t-il pour décrire l’incorporation de nouvelles informations dans un schéma existant ?"
+    answer="['assimilation']"
+    placeholder="Votre réponse"
+  />
+</form>
+
+<div class="mb-4"></div>
+
+<form>
+  <QuestionSelect
+    id="TADQ19"
+    v-model="questionStates[18]"
+    text="Qui est l’auteur principalement associé au conditionnement opérant ?"
+    :options="[ 
+      { value: 'a', text: 'Jean Piaget' },
+      { value: 'b', text: 'Ivan Pavlov' },
+      { value: 'c', text: 'B.F. Skinner' },
+      { value: 'd', text: 'Albert Bandura' }
+    ]"
+    answer="c"
+  />
+</form>
+
+
+
+
+
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
@@ -336,9 +342,9 @@ Récupération : Accès et utilisation des informations stockées."
   <!--<button class="btn btn-secondary" type="button" @click="reset">Recommencer</button>-->
 
   <button class="btn btn-primary" @click="reset">Réinitialiser</button>
-  <div>Réponses correctes : {{ questionStates }}</div>
+  <!-- <div>Réponses correctes : {{ questionStates }}</div> -->
   <!--permet de voir mes réponses(true ou false) et de savoir si mon code marche bien, on voit bien que avec la conditon immédiate on voit tout de suite mes réponse et elles s'initialise pas au fur et à mesure que je répond au quiz-->
-  <div>Debug états : {{ questionStates }}</div>
+  <!-- <div>Debug états : {{ questionStates }}</div> -->
   <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
   <!--affiche le score uniquement si toutes les questions ont été soumises et corrigées-->
 </template>

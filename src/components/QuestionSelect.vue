@@ -19,7 +19,7 @@ const props = defineProps({
   },
 });
 
-const selectedValue = ref<string | null>(null);
+const value = ref<string | null>(null);
 
 const answerText = computed<string>(
   () =>
@@ -28,7 +28,7 @@ const answerText = computed<string>(
 );
 
 watch(
-  selectedValue,
+  value,
   (newValue) => {
     if (newValue === null) {
       model.value = QuestionState.Empty;
@@ -43,24 +43,32 @@ watch(
   model,
   (newModel) => {
     if (newModel === QuestionState.Submit) {
-      model.value = selectedValue.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+      model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
     } else if (newModel === QuestionState.Empty) {
-      selectedValue.value = null;
+      value.value = null;
     }
   },
 );
 </script>
 
+
 <template>
+<!--Affiche la question-->
+    {{ props.text }}
     <div>
-      <label :for="props.id">{{ props.text }}</label>
-      <select :id="props.id" v-model="selectedValue" class="form-select">
-        <option value="" disabled selected>Choisissez une option</option>
-        <option v-for="option in props.options" :key="option.value" :value="option.value">
+        <!--création de la liste déroulante avec les choix de réponses-->
+      <select :id="props.id" v-model="value" class="form-select">
+        <!--affiche choisissez une réponse-->
+        <option value="" disabled selected>Choisissez une réponse</option>
+      <!-- crée les options de la liste à partir des réponses données, chaque option a un texte et une valeur -->
+        <option v-for="option in props.options" 
+        :key="option.value" 
+        :value="option.value">
+        <!--affiche le texte des différentes réponses possibles -->
           {{ option.text }}
         </option>
       </select>
-  
+  <!-- comme dans questionradio, cette partie permet de dire à l'utilisateur si il y a bien répondu et sinon de lui donner la bonne réponse ainsi qu'ajouter des commentaire en plus avec answerDetail-->
       <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
         <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
         <p v-else class="text-danger">

@@ -9,7 +9,7 @@ const model = defineModel<QuestionState>(QuestionState.Empty)
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type: String, required: true },
+  answer: { type: [String, Array ], required: true }, //la réponse peut être un string ou un tableau si plusieurs réponses
   answerDetail: { type: String, default: "" },
   placeholder: {
     type: String,
@@ -18,6 +18,19 @@ const props = defineProps({
 })
 
 const value = ref<string | null>(null)
+
+//vérifie si la réponse est correct
+const isCorrectAnswer = (): boolean => {
+  //si prop.answer est un tableau 
+  if (Array.isArray(props.answer)) {
+    //alors vérifie si la réponse est dans le tableau 
+    return props.answer.includes(value.value?.trim()?.toLowerCase() || ''); //on utilise includes pour vérifier plusieurs réponses dans le tableau
+  }// on met la réponse en minuscule(toLowerCase()) et on enlvève les espcaces inutiles (trim()) 
+
+  //sinon prop.answet est juste un string
+  return value.value?.trim()?.toLowerCase() === props.answer.trim().toLowerCase();
+};// on compare si la réponse de l'utilisateur est juste avec prop.answer et comme avant on mets tous en minuscule et on enlève les espaces inutiles  
+
 
 //la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change */
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
@@ -33,8 +46,8 @@ watch(
   { immediate: true },
 )
 
-//IF: si newModele est égale a questionstate ca veut dire que la réponse à été rentrée
-//--> on vérifier alors si value.value(éa valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
+//IF: si newModele est égale a questionstate.submit ca veut dire que la réponse à été rentrée
+//--> on vérifier alors si isCorrectAnswer est égale à model.value (la valeur entrée par l'utilisateur)est égale à props.answer(la bonne réponse)
 //--> si oui alors on met à jour model.value à questionstate.correct (la bonne réponse)
 //--> sinon on met à jour sous questionstate.wrong (mauvaise réponse)
 
@@ -44,11 +57,11 @@ watch(
   model,
   (newModel) => {
     if (newModel === QuestionState.Submit) {
-      model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-    } else if (newModel === QuestionState.Empty){
-      value.value = null
+      model.value = isCorrectAnswer() ? QuestionState.Correct : QuestionState.Wrong;
+    } else if (newModel === QuestionState.Empty) {
+      value.value = null;
     }
-  },
+  }
 );
 
 

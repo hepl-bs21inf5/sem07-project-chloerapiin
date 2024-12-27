@@ -285,8 +285,21 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 
 # Expliquer votre démarche pour les améliorations que vous avez choisies :
 
+1. J'ai ajouter le fichier avec le composant questionSelect
 ### Pourquoi avez-vous choisi ces améliorations ?
+
+1. il permet de rendre mon fichier plus aérer à la place d'avoir que des questionRadio.
 ### Comment les avez-vous implémentées ?
+
+1. j'ai repris tous le script de QuestionRadio et j'ai changé le template (il y a des commentaires directement dans le code).
+
 ### Quels problèmes avez-vous rencontrés ?
+1. j'ai du aller chercher sur internet pour trouver comment écrire  le code dans le template 
+    source : https://fr.vuejs.org/guide/essentials/forms.html#select
+    source : https://getbootstrap.com/docs/5.3/forms/select/#default
+    Je me suis également aidé de blackbox.ai pour bien structurer mon code.
+2. source : https://vuejs.org/guide/essentials/forms.html#select
+source:
 ### Quelles améliorations pourriez-vous encore apporter ?
-### Vous devoir pouvoir expliquer votre code afin de valider une amélioration.
+
+### Vous devez pouvoir expliquer votre code afin de valider une amélioration.
