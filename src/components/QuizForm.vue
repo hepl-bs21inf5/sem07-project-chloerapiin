@@ -5,6 +5,7 @@ import { QuestionState } from '@/utils/models'
 import { computed, ref } from 'vue'
 import QuestionCheckbox from './QuestionCheckbox.vue'
 import QuestionTextlibre from './QuestionTextlibre.vue'
+import QuestionSelect from './QuestionSelect.vue'
 
 const questionStates = ref<QuestionState[]>([])
 const score = computed<number>(
@@ -311,6 +312,22 @@ Récupération : Accès et utilisation des informations stockées."
   </form>
 
   <div class="mb-4"></div>
+
+  <form>
+  <QuestionSelect
+    id="TAD11"
+    v-model="questionStates[17]"
+    text="Selon Piaget, quelle est une des caractéristiques de l’intelligence humaine ?"
+    :options="[
+      { value: 'a', text: 'La capacité à mémoriser' },
+      { value: 'b', text: 'L’introduction de continuité dans l’activité mentale' },
+      { value: 'c', text: 'La capacité à analyser des objets concrets uniquement' },
+      { value: 'd', text: 'L’acquisition automatique des langages' }
+    ]"
+    answer="b"
+    answerDetail="L’introduction de continuité dans l’activité mentale est une caractéristique clé de l’intelligence humaine selon Piaget."
+  />
+</form>
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   <!-- pour mettre un bouton reset qui englobe tous le quiz je dois mettre en secondaire et utiliser la méthode resetForm elle remet à zéro le formulaire  -->
