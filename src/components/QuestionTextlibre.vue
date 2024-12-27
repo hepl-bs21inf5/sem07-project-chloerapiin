@@ -22,17 +22,16 @@ const disabled = computed(() => {
 
 
 //si la question est soumise alors affiche le commentaire
-const showFeedback = computed(() => {
-  return model.value === QuestionState.Submit;
-});
+const showFeedback = computed(() => model.value === QuestionState.Submit);
+
 
 //donne le message de feedback grâce à answerdetail
-const feedbackMessage = computed(() => {
-  if (model.value === QuestionState.Submit) {
-    return props.answerDetail; 
-  }
-  return ''; 
-});
+// const feedbackMessage = computed(() => {
+//   if (model.value === QuestionState.Submit) {
+//     return props.answerDetail;
+//   }
+//   return '';
+// });
 
 
 watch(userAnswer, (newValue) => {
@@ -73,8 +72,10 @@ function reset(): void {
       :placeholder="placeholder"
       :disabled="disabled"
     ></textarea>
+    <p v-if="showFeedback && answerDetail" class="blockquote-footer">
+      {{ answerDetail }}
+    </p>
   </div>
-  <p class="blockquote-footer" v-if="showFeedback">{{ feedbackMessage }}</p>
 </template>
 
 <style scoped>
