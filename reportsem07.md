@@ -26,7 +26,7 @@ Seminaire 06 - Outils
 | Checkbox        | 1h               | 2h              | je n'avais pas compris la logique d'écriture dans Quizform.vue, mais enfaite c'est comme questionradio    |
 | réponse         | 1h               | 1h30min         | Ce qui est attendu est clairement formulé et expliqué dans la marche à suivre, faire attention de bien    |
 |                 |                  |                 | vérifier les majuscules ou ce qu'on à écrit pour nos valeurs, pour que la comparaiosn marche bien         |
-| score           | 1h               |                 |                                                                                                           |
+| score           | 1h               | 2h              | long de comprendre la logique des questions states mais après c'est plus facile                           |
 | états et bouton | 1h               | 2h45            | étape très longue et assez fastidieuse, j'ai du faire beaucoup de recherche et m'aider des solutions, car |
 |                 |                  |                 | je n'avais jamais les choses justes...donc je ne suis èas sûre d'avoir réellemnt compris comment faire... |
 | réponses immuab | 10min            | 2min            |                                                                                                           |
@@ -36,10 +36,9 @@ Seminaire 06 - Outils
 |                 |                  |                 | juste ou si c'est faux                                                                                    |
 | déploiement     | 30min            | 2h              | J'ai eu un problème ou une deuxiè me branche c'est créer j'ai du alors reprendre un ancien commit et      |
 |                 |                  |                 | recommencer le déploiement pour que cette fois cela marche et que je reste sur la branche main            |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
-|                 |                  |                 |                                                                                                           |
+| questionselect  | 1h               | 30min           | au final ça ressemblait beaucou aux questionsradio, il fallait juste faire un peu de recherche            |
+|                 |                  |                 | pour savoir comment mettre une liste déroulante                                                           |
+| 2 rép questtext | 30min            | 20min           | ça permet de répondre en chiffre ou en lettre et écite les erreur inutiles                                |
 
 # 2. Difficultés rencontrées et solutions trouvées
 
@@ -49,10 +48,6 @@ Seminaire 06 - Outils
 | Problème 2: 28.12.24 | Afficher le score avec les questiontextlibre ca pose problème, car elle n'admette  |                  |
 |                      | pas de juste et/ou de faux donc pas logique de calculer le score mais je n'arrive  |                  |
 |                      | à les enlever dans le calcul du score                                              |                  |
-|                      |                                                                                    |                  |
-|                      |                                                                                    |                  |
-
-| | pas de juste et/ou de faux donc pas logique de calculer le score mais je n'arrive | |
 
 # 3. Suite du projet
 
@@ -61,11 +56,6 @@ Seminaire 06 - Outils
 | contact (1h)     | j'ai repris le code du formulaire qu'on avait fait pour l'aventure et je l'ai réutilisé pour ma page de contact, qui s'appele ContactView,vue |
 | parametre(10min) | j'ai juste créé une page ParametreView.vue pour mettre le titre parametre                                                                     |
 | + de question    | j'ai rajouter des questions en lien avec mon cours de théorie de l'apprentissage                                                              |
-|                  |                                                                                                                                               |
-|                  |                                                                                                                                               |
-|                  |                                                                                                                                               |
-|                  |                                                                                                                                               |
-|                  |                                                                                                                                               |
 
 option + shift + F pour formater le tableau
 command + shift + V pour prévisualiser le rapport
@@ -291,17 +281,21 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 # Expliquer votre démarche pour les améliorations que vous avez choisies :
 
 1. J'ai ajouter le fichier avec le composant questionSelect.
-2.Création d'un nouveau sytle CSS pour les commentaires (answerDetail).
+2. Création d'un nouveau sytle CSS pour les commentaires (answerDetail)
+3. mes questiontext admettent plusieurs réponses
 
 ### Pourquoi avez-vous choisi ces améliorations ?
 
 1. il permet de rendre mon fichier plus aérer à la place d'avoir que des questionRadio.
 2. ça permet de bien comprendre que c'est un nouveau commentaire ajouter après la soumission du quiz.
+3. permet de laisser l'utilisateur choisir si il veut écire en chiffres ou en lettre par exemple
 
 ### Comment les avez-vous implémentées ?
 
 1. j'ai repris tous le script de QuestionRadio et j'ai changé le template (il y a des commentaires directement dans le code).
 2. J'ai ajouté dans le style à la fin de chaque document Question...
+3. answer devient un string ou un tableu de string.
+   création d'un const qui vérifie si la réponse de l'utilisateur est juste en la comparant au string (si answer en est un) ou alors à un tableau de string.
 
 ### Quels problèmes avez-vous rencontrés ?
 
@@ -309,14 +303,13 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
    source : https://fr.vuejs.org/guide/essentials/forms.html#select
    source : https://getbootstrap.com/docs/5.3/forms/select/#default
    Je me suis également aidé de blackbox.ai pour bien structurer mon code.
-2. pas de problème 
+2. pas de problème
+3. il fallait comprendre que la réponse pouvait soit être un string ou alors un tableau de string et esnuite à partir de là c'était plus simple de comprendre comment gérer la comparaison de réponse et ainsi voir le juste et le faux.
 
 ### Quelles améliorations pourriez-vous encore apporter ?
-+ J'aurais voulu pouvoir mettre mes questiontextlibre à part et faire un quiz avec un score et des question qui admettent des justes et des faux et faire une 2e partie avec mes questiontextlibre.--> j'ai essaié à plusieurs reprise mais il y avait toujours un problème avec les questionstate et quand je modifiais le v-model pour qu'elles sortent des état avec questionstate et bien ça ne marchait plus. J'ai donc préféré supprimer mes questiontextlibre et favoriser un quiz qui marche bien avec un score juste etc.
---> J'ai même essayer de mettre que les 14 premières question(juste/faux) on les ajoutait au score si questionstate correct sinon pas et pour les 6 autres question(questiontextlibre) que si les questionstate etait fill (remplis) alors ça ajoutait de toute facon +1 au score mais le code ne marchais plus et mes 6 dernières question ne marchait plus avec le bouton submit
-+ Ajouter les bouton de terminer et réinitialiser pour le quiz trivia, avec les fonction, etc.
-+ Création du vrai page de paramètre
-+ création de plusieurs page de quiz en rapport à différents cours pour m'aider à réviser et à m'entrainer
 
-
-
+- J'aurais voulu pouvoir mettre mes questiontextlibre à part et faire un quiz avec un score et des question qui admettent des justes et des faux et faire une 2e partie avec mes questiontextlibre.--> j'ai essaié à plusieurs reprise mais il y avait toujours un problème avec les questionstate et quand je modifiais le v-model pour qu'elles sortent des état avec questionstate et bien ça ne marchait plus. J'ai donc préféré supprimer mes questiontextlibre et favoriser un quiz qui marche bien avec un score juste etc.
+  --> J'ai même essayer de mettre que les 14 premières question(juste/faux) on les ajoutait au score si questionstate correct sinon pas et pour les 6 autres question(questiontextlibre) que si les questionstate etait fill (remplis) alors ça ajoutait de toute facon +1 au score mais le code ne marchais plus et mes 6 dernières question ne marchait plus avec le bouton submit
+- Ajouter les bouton de terminer et réinitialiser pour le quiz trivia, avec les fonction, etc.
+- Création du vrai page de paramètre
+- création de plusieurs page de quiz en rapport à différents cours pour m'aider à réviser et à m'entrainer
