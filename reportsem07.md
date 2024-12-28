@@ -312,5 +312,11 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 2. pas de problème 
 
 ### Quelles améliorations pourriez-vous encore apporter ?
++ J'aurais voulu pouvoir mettre mes questiontextlibre à part et faire un quiz avec un score et des question qui admettent des justes et des faux et faire une 2e partie avec mes questiontextlibre.--> j'ai essaié à plusieurs reprise mais il y avait toujours un problème avec les questionstate et quand je modifiais le v-model pour qu'elles sortent des état avec questionstate et bien ça ne marchait plus. J'ai donc préféré supprimer mes questiontextlibre et favoriser un quiz qui marche bien avec un score juste etc.
+--> J'ai même essayer de mettre que les 14 premières question(juste/faux) on les ajoutait au score si questionstate correct sinon pas et pour les 6 autres question(questiontextlibre) que si les questionstate etait fill (remplis) alors ça ajoutait de toute facon +1 au score mais le code ne marchais plus et mes 6 dernières question ne marchait plus avec le bouton submit
++ Ajouter les bouton de terminer et réinitialiser pour le quiz trivia, avec les fonction, etc.
++ Création du vrai page de paramètre
++ création de plusieurs page de quiz en rapport à différents cours pour m'aider à réviser et à m'entrainer
 
-### Vous devez pouvoir expliquer votre code afin de valider une amélioration.
+
+
