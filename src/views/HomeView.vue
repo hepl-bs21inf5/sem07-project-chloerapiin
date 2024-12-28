@@ -4,7 +4,7 @@ import QuizForm from '@/components/QuizForm.vue'
 
 <template>
   <div class="container mt-3">
-    <h1>Quiz</h1>
+    <h1 class="quiz-title">Quiz sur la théorie de l'apprentissage</h1>
     <QuizForm />
   </div>
 </template>

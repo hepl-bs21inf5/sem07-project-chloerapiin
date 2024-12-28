@@ -70,7 +70,8 @@ watch(model, (newModel) => {
       <p v-else class="text-danger">
         Faux ! Les réponses étaient : {{ props.answer.join(", ") }}
       </p>
-      <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
+      <p v-if="props.answerDetail" class="answer-detail">{{ props.answerDetail }}</p>
+      
   </div>
   
 </template>
@@ -81,5 +82,13 @@ watch(model, (newModel) => {
 }
 .text-success {
   color: greenyellow !important;
+}
+.answer-detail {
+  font-style: italic; /* Pour le texte en italique */
+  color: #6c757d; /* Une couleur grise pour un ton neutre */
+  font-size: 0.9rem; /* Une taille légèrement plus petite que le texte principal */
+  margin-top: 0.5rem; /* Un espacement au-dessus pour séparer du contenu principal */
+  border-left: 3px solid #e0e0e0; /* Une bordure fine pour accentuer le côté "commentaire" */
+  padding-left: 0.5rem; /* Un espace entre la bordure et le texte */
 }
 </style>

@@ -290,18 +290,18 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 
 # Expliquer votre démarche pour les améliorations que vous avez choisies :
 
-1. J'ai ajouter le fichier avec le composant questionSelect
-2.
+1. J'ai ajouter le fichier avec le composant questionSelect.
+2.Création d'un nouveau sytle CSS pour les commentaires (answerDetail).
 
 ### Pourquoi avez-vous choisi ces améliorations ?
 
 1. il permet de rendre mon fichier plus aérer à la place d'avoir que des questionRadio.
-2.
+2. ça permet de bien comprendre que c'est un nouveau commentaire ajouter après la soumission du quiz.
 
 ### Comment les avez-vous implémentées ?
 
 1. j'ai repris tous le script de QuestionRadio et j'ai changé le template (il y a des commentaires directement dans le code).
-2.
+2. J'ai ajouté dans le style à la fin de chaque document Question...
 
 ### Quels problèmes avez-vous rencontrés ?
 
@@ -309,7 +309,7 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
    source : https://fr.vuejs.org/guide/essentials/forms.html#select
    source : https://getbootstrap.com/docs/5.3/forms/select/#default
    Je me suis également aidé de blackbox.ai pour bien structurer mon code.
-2. source:
+2. pas de problème 
 
 ### Quelles améliorations pourriez-vous encore apporter ?
 

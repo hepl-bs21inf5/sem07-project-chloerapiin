@@ -1,17 +1,72 @@
 /* https://getbootstrap.com/docs/5.3/components/buttons/#variables */
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: pink;
+  --bs-btn-bg: deeppink;
   --bs-btn-border-color: pink;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: pink;
   --bs-btn-hover-border-color: pink;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: pink;
+  --bs-btn-active-bg: deeppink;
   --bs-btn-active-border-color: pink;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: pink;
   --bs-btn-disabled-border-color: pink;
+  margin-right: 10px; /* Ajoute un espace entre les boutons */
 }
+.btn-reset {
+  --bs-btn-color: #fff; /* Couleur du texte */
+  --bs-btn-bg: lightblue; /* Couleur de fond */
+  --bs-btn-border-color: lightblue; /* Couleur de la bordure */
+  --bs-btn-hover-color: #fff; /* Couleur du texte au survol */
+  --bs-btn-hover-bg: deepskyblue; /* Couleur de fond au survol */
+  --bs-btn-hover-border-color: deepskyblue; /* Bordure au survol */
+  --bs-btn-focus-shadow-rgb: 30, 144, 255; /* Ombre de focus */
+  --bs-btn-active-color: #fff; /* Couleur du texte en état actif */
+  --bs-btn-active-bg: dodgerblue; /* Couleur de fond en état actif */
+  --bs-btn-active-border-color: dodgerblue; /* Bordure en état actif */
+  --bs-btn-disabled-color: #ddd; /* Couleur du texte désactivé */
+  --bs-btn-disabled-bg: lightblue; /* Couleur de fond désactivé */
+  --bs-btn-disabled-border-color: lightblue; /* Bordure désactivée */
+  margin-right: 0; /* Facultatif : évite un espace supplémentaire pour le dernier bouton */
+}
+/*la mise en page pour le fond du quiz, mais pas pour toute la page*/
+.quiz-container {
+  background-color: #F8E1DA; /* Un rose pâle */
+  padding: 20px; /* Pour un espacement interne */
+  border-radius: 8px; /* Coins arrondis pour un effet esthétique */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : légère ombre */
+  
+}
+/*Le style de mon titre de mon quiz*/
+.quiz-title {
+  font-size: 2rem; /* Taille du texte plus grande */
+  font-weight: bold; /* Texte en gras */
+  color: #000000; /* Une teinte rose framboise élégante */
+  text-align: center; /* Centrer le titre */
+  margin-bottom: 20px; /* Espacement sous le titre */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombre légère pour un effet esthétique */
+}
+.title-bold {
+  font-weight: bold; /* Met le texte en gras */
+  font-size: 1.5rem; /* Taille du texte (ajustable selon vos besoins) */
+  color: #000; /* Couleur du texte, noir par défaut */
+}
+.score-display {
+  font-weight: bold; /* Met le texte en gras */
+  font-size: 1.25rem; /* Augmente légèrement la taille */
+  color: #ffffff; /* Texte noir */
+  border: 2px solid #000; /* Bordure noire autour */
+  padding: 10px; /* Espacement interne */
+  border-radius: 8px; /* Coins arrondis pour une apparence plus douce */
+  text-align: center; /* Centre le texte */
+  margin-top: 20px; /* Ajoute un espacement au-dessus */
+  display: inline-block; /* Ajuste la largeur autour du contenu */
+  background-color: #000000; /* Fond blanc pour contraste */
+}
+
+
+
+/*Tous ces styles, je les ais fais générer par blackboxai en lui expliquant quel style je voulais*/
