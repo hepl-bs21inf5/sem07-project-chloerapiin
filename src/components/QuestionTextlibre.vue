@@ -72,9 +72,10 @@ function reset(): void {
       :placeholder="placeholder"
       :disabled="disabled"
     ></textarea>
-    <p v-if="showFeedback && answerDetail" class="blockquote-footer">
-      {{ answerDetail }}
-    </p>
+    <p v-if="modelValue=== QuestionState.Submit && answerDetail">
+  {{ answerDetail }}
+</p>
+
   </div>
 </template>
 

@@ -23,7 +23,7 @@ Seminaire 06 - Outils
 | Questiontext    | 1h               | 1h40 +          | Pas facile de faire attention à tous les détails à ne pas oublier                                         |
 |                 |                  |                 | pour faire fonctionner le code comme pour question RADIO                                                  |
 | API             | 1h30             | 30min           | porblème avec le fichier triviaView --> il dit : Impossible de localiser le module                        |
-| Checkbox        | 1h...            | 2h...           | je n'y arrive pas, je mélange tous les quiz et j'ai plus que le trivia et plus le mien de quiz            |
+| Checkbox        | 1h               | 2h              | je n'avais pas compris la logique d'écriture dans Quizform.vue, mais enfaite c'est comme questionradio    |
 | réponse         | 1h               | 1h30min         | Ce qui est attendu est clairement formulé et expliqué dans la marche à suivre, faire attention de bien    |
 |                 |                  |                 | vérifier les majuscules ou ce qu'on à écrit pour nos valeurs, pour que la comparaiosn marche bien         |
 | score           | 1h               |                 |                                                                                                           |
@@ -43,11 +43,16 @@ Seminaire 06 - Outils
 
 # 2. Difficultés rencontrées et solutions trouvées
 
-| **Problème**        | **Description**                                                                    | **Solution**     |
-| ------------------- | ---------------------------------------------------------------------------------- | ---------------- |
-| Problème 1: 1.12.24 | Afficher le score uniquement si toutes les questions ont été soumises et corrigées | problème de type |
-|                     |                                                                                    |                  |
-|                     |                                                                                    |                  |
+| **Problème**         | **Description**                                                                    | **Solution**     |
+| -------------------- | ---------------------------------------------------------------------------------- | ---------------- |
+| Problème 1: 1.12.24  | Afficher le score uniquement si toutes les questions ont été soumises et corrigées | problème de type |
+| Problème 2: 28.12.24 | Afficher le score avec les questiontextlibre ca pose problème, car elle n'admette  |                  |
+|                      | pas de juste et/ou de faux donc pas logique de calculer le score mais je n'arrive  |                  |
+|                      | à les enlever dans le calcul du score                                              |                  |
+|                      |                                                                                    |                  |
+|                      |                                                                                    |                  |
+
+| | pas de juste et/ou de faux donc pas logique de calculer le score mais je n'arrive | |
 
 # 3. Suite du projet
 
@@ -71,7 +76,7 @@ command + shift + V pour prévisualiser le rapport
 
 - **main.ts**: dans ce document on import des fichiers CSS pour le style de l'application, comme les Bootstrap. Il y a aussi la fonction createApp qui crée notre application. C'est aussi ici qu'on gère pour voir et accéder aux différentes pages, ce qui permet de naviguer dans mon app
 
-- **main.css** : dans ce fichier on définit l'apparence des boutons avec la classe".btn-primary" dans notre app. 
+- **main.css** : dans ce fichier on définit l'apparence des boutons avec la classe".btn-primary" dans notre app.
 
 - **App.vue**: le fichier est très important, car il contient la barre de navigation de notre app, cela permet de se déplacer dans les différentes pages, accueil, trivia, contact, etc. Grace a "RouterLink", on peut gérer la navigation vers les différentes pages et "RouterView", permet d'afficher le contenu des pages.
 
@@ -141,13 +146,14 @@ pas immédiat il attend que l'utilisateur choisisse des réponses avant d'affich
 **1er méthode** :
 
 ```TS
-    const score = computed<number>(  
+    const score = computed<number>(
     () => correctAnswers.value.filter(value => value).length,
     )
     /*correctAnswers.value est un tableau qui contient les réponses true or false
     filter(value=>value): méthode qui permet de filter le tableau et dans resortir que les trues
     length : calcul le nombre de réponses correctes*/
 ```
+
 - **+** cette méthode est plus courte et concise
 
 * **-** elle a besoin de créer un tableau avec les valeurs true, elle marche seulement pour des réponses booléens
@@ -185,7 +191,7 @@ if (newModel === QuestionState.Submit) {
 
     if (value.value === props.answer) { /*si la valeur    entrée est correct(= à props.answer)*/
     model.value = QuestionState.Correct;/*alors on assigne questionState.Correct à model value*/
-    } 
+    }
     else { /*Si la réponse est incorrecte*/
         model.value = QuestionState.Wrong; /*alors on assigne questionState.Wrong à model value*/
     }
@@ -282,24 +288,29 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
     })
 ```
 
-
 # Expliquer votre démarche pour les améliorations que vous avez choisies :
 
 1. J'ai ajouter le fichier avec le composant questionSelect
+2.
+
 ### Pourquoi avez-vous choisi ces améliorations ?
 
 1. il permet de rendre mon fichier plus aérer à la place d'avoir que des questionRadio.
+2.
+
 ### Comment les avez-vous implémentées ?
 
 1. j'ai repris tous le script de QuestionRadio et j'ai changé le template (il y a des commentaires directement dans le code).
+2.
 
 ### Quels problèmes avez-vous rencontrés ?
-1. j'ai du aller chercher sur internet pour trouver comment écrire  le code dans le template 
-    source : https://fr.vuejs.org/guide/essentials/forms.html#select
-    source : https://getbootstrap.com/docs/5.3/forms/select/#default
-    Je me suis également aidé de blackbox.ai pour bien structurer mon code.
-2. source : https://vuejs.org/guide/essentials/forms.html#select
-source:
+
+1. j'ai du aller chercher sur internet pour trouver comment écrire le code dans le template
+   source : https://fr.vuejs.org/guide/essentials/forms.html#select
+   source : https://getbootstrap.com/docs/5.3/forms/select/#default
+   Je me suis également aidé de blackbox.ai pour bien structurer mon code.
+2. source:
+
 ### Quelles améliorations pourriez-vous encore apporter ?
 
 ### Vous devez pouvoir expliquer votre code afin de valider une amélioration.

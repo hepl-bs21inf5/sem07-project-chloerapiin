@@ -91,7 +91,7 @@ watch(
       <p v-else class="text-danger">
         Faux ! La réponse était : {{ props.answer }}
     </p>
-    <p class="blockquote-footer">{{ props.answerDetail }}</p>
+    <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
 
