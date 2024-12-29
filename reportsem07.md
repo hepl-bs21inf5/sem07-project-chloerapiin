@@ -284,13 +284,14 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 2. Création d'un nouveau sytle CSS pour les commentaires (answerDetail)
 3. mes questiontext admettent plusieurs réponses
 4. possibilité de jouer à quiztrivia
-    + crée un const pour pouvoir stocker les réponses de l'utilisateur 
+--> suivre le cheminement sur le fichier TriviaView.vue avec les commentaire sur le code
 
 ### Pourquoi avez-vous choisi ces améliorations ?
 
 1. il permet de rendre mon fichier plus aérer à la place d'avoir que des questionRadio.
 2. ça permet de bien comprendre que c'est un nouveau commentaire ajouter après la soumission du quiz.
 3. permet de laisser l'utilisateur choisir si il veut écire en chiffres ou en lettre par exemple
+4. Comme ça mon site est plus interactif avec la possibilité de jouer sur deux quiz
 
 ### Comment les avez-vous implémentées ?
 
@@ -298,6 +299,7 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 2. J'ai ajouté dans le style à la fin de chaque document Question...
 3. answer devient un string ou un tableu de string.
    création d'un const qui vérifie si la réponse de l'utilisateur est juste en la comparant au string (si answer en est un) ou alors à un tableau de string.
+4. en grande partie en me référant à mon fichier quizform.vue et en faisant des recherches pour comprendre comment faire aller mon fichier trivia. Sinon presque toutes les fonctions et les styles viennent du fichier Quizform.vue.
 
 ### Quels problèmes avez-vous rencontrés ?
 
@@ -307,6 +309,7 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
    Je me suis également aidé de blackbox.ai pour bien structurer mon code.
 2. pas de problème
 3. il fallait comprendre que la réponse pouvait soit être un string ou alors un tableau de string et esnuite à partir de là c'était plus simple de comprendre comment gérer la comparaison de réponse et ainsi voir le juste et le faux.
+4. difficile car il fallait que je rajoute des fonctions que je ne connaissais pas forcément donc très long de comprendre comment le code fonctionne.
 
 ### Quelles améliorations pourriez-vous encore apporter ?
 
