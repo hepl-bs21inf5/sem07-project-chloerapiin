@@ -55,7 +55,8 @@ const shuffledOptions = ref<any[]>([]);
 <div class="quiz-container">
 
   <p class="text-4xl font-bold"></p>
-  <h2 class="font-bold text-lg">Quiz avec des questions à choix multiples, des questions avec de la réponse texte et des questions avec des cases à cocher</h2>
+  <h2 class="explication">Quiz varié comprenant des questions à choix multiples, des réponses à saisir en texte et des questions avec des cases à cocher.
+    Bonne chance!!!🌞</h2>
 
   <div class="mb-4"></div>
 

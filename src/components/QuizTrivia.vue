@@ -104,7 +104,6 @@ function reset(event: Event): void {
 <template>
 <div class="quiz-container">
   <div class="container trivia-container">
-    <h1 class="text-center mb-4">Trivia</h1>
     <form @submit.prevent="submit">
       <div v-for="(question, index) in questions" :key="index" class="mb-4">
         <p v-html="question.question"></p>

@@ -66,7 +66,9 @@
   display: inline-block; /* Ajuste la largeur autour du contenu */
   background-color: #000000; /* Fond blanc pour contraste */
 }
-
+.explication {
+  text-align: center;
+}
 
 
 /*Tous ces styles, je les ais fais générer par blackboxai en lui expliquant quel style je voulais*/
