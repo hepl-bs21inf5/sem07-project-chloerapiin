@@ -70,7 +70,7 @@ watch(
       </select>
   <!-- comme dans questionradio, cette partie permet de dire à l'utilisateur si il y a bien répondu et sinon de lui donner la bonne réponse ainsi qu'ajouter des commentaire en plus avec answerDetail-->
       <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-        <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+        <p v-if="model === QuestionState.Correct" class="text-success">Juste ! 🎉</p>
         <p v-else class="text-danger">
           Faux ! La réponse était : {{ answerText }}
         </p>

@@ -17,6 +17,7 @@ const props = defineProps({
     default: 'Veuillez saisir une réponse'}, //phrase mise par défaut pour chaque question posée
 })
 
+//réponse rentré par l'utilisateur
 const value = ref<string | null>(null)
 
 //vérifie si la réponse est correct
@@ -87,11 +88,11 @@ watch(
   </div>
 
     <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-      <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+      <p v-if="model === QuestionState.Correct" class="text-success">Juste ! 🎉</p>
       <p v-else class="text-danger">
         Faux ! La réponse était : {{ props.answer }}
     </p>
-    <p v-if="props.answerDetail" class="answer-detail">{{ props.answerDetail }}</p>
+    <p v-if="props.answerDetail" class="answer">{{ props.answerDetail }}</p>
   </div>
 </template>
 

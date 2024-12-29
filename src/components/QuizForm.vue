@@ -38,6 +38,17 @@ function reset(event: Event): void {
   event.preventDefault()
   questionStates.value = questionStates.value.map(() => QuestionState.Empty)
 }
+//fonction pour mélangerles élements d'un tableau dans ce cas il s'agit des différentes options pour la question
+function shuffle(array: any[]) {
+  return array
+    .map((item) => ({ ...item, sort: Math.random() }))    //--> chaque objet du tableau recoit une nouvelle propriété sort, qui contient un numéro chosi au hasard grâce à Math.random()
+    .sort((a, b) => a.sort - b.sort)                      //--> les objet sont trié selon leur valeur dans sort (nb aléatoire)     
+    .map(({ value, text }) => ({ value, text }));         //-->enfin on garde plus que les valeurs a, b, c, etc. Et les valeurs text des options
+}
+
+const shuffledOptions = ref<any[]>([]);
+
+
 </script>
 
 <template>
@@ -59,7 +70,7 @@ function reset(event: Event): void {
         { value: 'b', text: 'La capacité d’accéder à une information à un moment donné' },
         { value: 'c', text: 'La capacité de créer de nouveaux souvenirs' },
         { value: 'd', text: 'La capacité d’oublier des informations inutiles' },
-        { value: 'e', text: 'Aucune des réponses ci-dessus' }
+        { value: 'e', text: 'Aucune des réponses' }
       ]"
       answer="b"
     />
@@ -215,7 +226,7 @@ function reset(event: Event): void {
         { value: 'b', text: 'Le stimulus inconditionnel perd son effet' },
         { value: 'c', text: 'Le stimulus neutre devient conditionné' },
         { value: 'd', text: 'La réponse conditionnée devient plus forte' },
-        { value: 'e', text: 'Aucune des réponses ci-dessus' }
+        { value: 'e', text: 'Aucune des réponses' }
       ]"
       answer="a"
     />
@@ -388,9 +399,7 @@ function reset(event: Event): void {
     />
   </form>
 
-
-
-
+  <div class="mb-4"></div>
 
   <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
   

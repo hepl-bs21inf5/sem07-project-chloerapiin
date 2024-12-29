@@ -3,6 +3,7 @@ import {
   ref, 
   computed,
   watch,
+  onMounted,
   type PropType,
 } from 'vue' //defineModel et defineProps pour définir le modèle (v-model) et les propriétés (text, name, options) du composant. 
 
@@ -27,6 +28,17 @@ const answerText = computed<string>(
     props.options.find((option) => option.value === props.answer)?.text ??
     props.answer,
 );
+
+//fonction pour mélangerles élements d'un tableau dans ce cas il s'agit des différentes options pour la question
+function shuffle(array: any[]) {
+  return array
+    .map((item) => ({ ...item, sort: Math.random() }))    //--> chaque objet du tableau recoit une nouvelle propriété sort, qui contient un numéro chosi au hasard grâce à Math.random()
+    .sort((a, b) => a.sort - b.sort)                      //--> les objet sont trié selon leur valeur dans sort (nb aléatoire)     
+    .map(({ value, text }) => ({ value, text }));         //-->enfin on garde plus que les valeurs a, b, c, etc. Et les valeurs text des options
+}
+
+//création 
+const shuffledOptions = ref(shuffle([...props.options]));//-->props.options notre liste d'options, shuffle prend nos options et les mélanges et c'est stocker dans ref
 
 //la fonction watch permet de d'éxecuter une fonction à chaque fosi que 'value' change 
 // elle va comparer la réponse de l'utilisateur avec notre answer(réponse correcte) et mettre à jour le 'model'
@@ -59,7 +71,7 @@ watch(
 <template>
   {{ props.text }}
   <!--On affiche le texte de la question-->
-  <div v-for="option in props.options" :key="option.value" class="form-check">
+  <div v-for="option in shuffledOptions" :key="option.value" class="form-check">
     <!--On affiche les options de réponse en utilisant une boucle v-for sur props.options : le <div> sera répété pour chaque option.-->
     <!--si commence par : alors il s'agit d'expression javascript (interprétées) si pas de : alors il s'agit de chaîne de caractères (non interprétées)-->
     <!-- on change aussi v-model pour qu'il soit lié à la valeur donc on lui assigne value  -->
@@ -82,7 +94,7 @@ watch(
   </div>
 
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-    <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+    <p v-if="model === QuestionState.Correct" class="text-success">Juste ! 🎉</p>
     <p v-else class="text-danger">
       Faux ! La réponse était : {{ answerText }}
     </p>

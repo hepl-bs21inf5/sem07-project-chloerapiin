@@ -66,7 +66,7 @@ watch(model, (newModel) => {
   </div>
 
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-      <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+      <p v-if="model === QuestionState.Correct" class="text-success">Juste ! 🎉</p>
       <p v-else class="text-danger">
         Faux ! Les réponses étaient : {{ props.answer.join(", ") }}
       </p>

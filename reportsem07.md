@@ -283,6 +283,8 @@ J'ai remodifié le code pour bien le comprendre et j'ai rajouté des commentaire
 1. J'ai ajouter le fichier avec le composant questionSelect.
 2. Création d'un nouveau sytle CSS pour les commentaires (answerDetail)
 3. mes questiontext admettent plusieurs réponses
+4. possibilité de jouer à quiztrivia
+    + crée un const pour pouvoir stocker les réponses de l'utilisateur 
 
 ### Pourquoi avez-vous choisi ces améliorations ?
 

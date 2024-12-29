@@ -18,11 +18,11 @@
 }
 .btn-reset {
   --bs-btn-color: #fff; /* Couleur du texte */
-  --bs-btn-bg: lightblue; /* Couleur de fond */
+  --bs-btn-bg: deepskyblue; /* Couleur de fond */
   --bs-btn-border-color: lightblue; /* Couleur de la bordure */
   --bs-btn-hover-color: #fff; /* Couleur du texte au survol */
-  --bs-btn-hover-bg: deepskyblue; /* Couleur de fond au survol */
-  --bs-btn-hover-border-color: deepskyblue; /* Bordure au survol */
+  --bs-btn-hover-bg: lightblue; /* Couleur de fond au survol */
+  --bs-btn-hover-border-color: lightblue; /* Bordure au survol */
   --bs-btn-focus-shadow-rgb: 30, 144, 255; /* Ombre de focus */
   --bs-btn-active-color: #fff; /* Couleur du texte en état actif */
   --bs-btn-active-bg: dodgerblue; /* Couleur de fond en état actif */
